@@ -1,51 +1,50 @@
 # radiofrequencia
 
-<p align="center">
-  <a href="#">
-    <img src="assets/logo-radiofrequencia.svg" alt="radiofrequencia" width="100%">
-  </a>
-</p>
+ # radiofrequencia
 
-## **See through walls with WiFi** ##
+ <p align="center">
+   <a href="#">
+     <img src="assets/logo-radiofrequencia.svg" alt="radiofrequencia" width="100%">
+   </a>
+ </p>
 
-**Turn ordinary WiFi into a spatial intelligence / sensing system.** Detect people, measure breathing and heart rate, track movement, and monitor rooms — through walls, in the dark, with no cameras or wearables. Just physics.
+ ## **Veja através de paredes com WiFi**
 
-### radiofrequencia is a WiFi sensing platform that turns radio signals into spatial intelligence.
+ **Transforme qualquer rede WiFi em um sistema de sensoriamento/espaço.** Detecte pessoas, meça respiração e batimentos, acompanhe movimentos e monitore ambientes — através de paredes, no escuro, sem câmeras ou dispositivos vestíveis.
 
-Every WiFi router already fills your space with radio waves. When people move, breathe, or even sit still, they disturb those waves in measurable ways. radiofrequencia captures these disturbances using Channel State Information (CSI) from low-cost ESP32 sensors and turns them into actionable data: who's there, what they're doing, and whether they're okay.
+ ### O que é `radiofrequencia`
 
-**What it senses:**
-- **Presence and occupancy** — detect people through walls, count them, track entries and exits
-- **Vital signs** — breathing rate and heart rate, contactless, while sleeping or sitting
-- **Activity recognition** — walking, sitting, gestures, falls — from temporal CSI patterns
-- **Environment mapping** — RF fingerprinting identifies rooms, detects moved furniture, spots new objects
-- **Sleep quality** — overnight monitoring with sleep stage classification and apnea screening
+ `radiofrequencia` é uma plataforma de sensoriamento por WiFi que converte sinais de rádio em informação espacial.
 
-Built on [RuVector](https://github.com/ruvnet/ruvector/) and [Cognitum Seed](https://cognitum.one), radiofrequencia runs entirely on edge hardware — an ESP32 mesh (as low as $9 per node) paired with a Cognitum Seed for persistent memory, cryptographic attestation, and AI integration. No cloud, no cameras, no internet required.
+ Roteadores WiFi inundam ambientes com ondas de rádio. Quando pessoas se movem, respiram ou permanecem estáticas, essas ondas se alteram de forma mensurável. `radiofrequencia` captura essas variações usando Channel State Information (CSI) de sensores ESP32 econômicos e transforma esses dados em informação útil: quem está presente, o que está fazendo e se há anomalias.
 
-The system learns each environment locally using spiking neural networks that adapt in under 30 seconds, with multi-frequency mesh scanning across 6 WiFi channels that uses your neighbors' routers as free radar illuminators. Every measurement is cryptographically attested via an Ed25519 witness chain.
+ **O que sensoreamos:**
+ - **Presença e ocupação** — detectar pessoas através de paredes, contagem e rastreamento de entradas/saídas
+ - **Sinais vitais** — frequência respiratória e cardíaca, de forma contactless enquanto a pessoa dorme ou está sentada
+ - **Reconhecimento de atividades** — caminhar, sentar, gestos, quedas — a partir de padrões temporais de CSI
+ - **Mapeamento do ambiente** — fingerprint RF para identificar salas, móveis deslocados e novos objetos
+ - **Qualidade do sono** — monitoramento noturno com classificação de estágios e triagem de apneia
 
-radiofrequencia turns ordinary WiFi into a contactless sensor. A $9 ESP32 board reads the radio reflections off the people in a room, and a small pretrained model — published on Hugging Face at [`ruvnet/wifi-densepose-pretrained`](https://huggingface.co/ruvnet/wifi-densepose-pretrained) — tells you who's there, how they're breathing, and how their heart rate is trending. The model fits in 8 KB (4-bit quantized), runs in microseconds on a Raspberry Pi, and reports 100% presence accuracy on the validation set. No cameras, no wearables, no app on the user's phone.
+ Construído sobre [RuVector](https://github.com/ruvnet/ruvector/) e integrável com [Cognitum Seed](https://cognitum.one), o `radiofrequencia` roda inteiramente na borda (edge): uma malha de ESP32 (≃ $9 por nó) emparelhada opcionalmente com um Cognitum Seed para armazenamento persistente, atestação criptográfica e integração com IA. Sem nuvem necessária.
 
-### Built for low-power edge applications
+ O sistema aprende o ambiente localmente usando redes neurais do tipo spiking que se adaptam em segundos, com varredura em múltiplas frequências (6 canais) e atestação de medições via cadeia de testemunho Ed25519.
 
-[Edge modules](#edge-intelligence-adr-041) are small programs that run directly on the ESP32 sensor — no internet needed, no cloud fees, instant response.
+ ### Projetado para edge de baixo consumo
 
-[![Rust 1.85+](https://img.shields.io/badge/rust-1.85+-orange.svg)](https://www.rust-lang.org/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tests: 1463](https://img.shields.io/badge/tests-1463%20passed-brightgreen.svg)](https://github.com/denilsude/rediofrequencia)
-[![Docker: multi-arch](https://img.shields.io/badge/docker-amd64%20%2B%20arm64-blue.svg)](https://hub.docker.com/r/ruvnet/wifi-densepose)
-[![Vital Signs](https://img.shields.io/badge/vital%20signs-breathing%20%2B%20heartbeat-red.svg)](#vital-sign-detection)
-[![ESP32 Ready](https://img.shields.io/badge/ESP32--S3-CSI%20streaming-purple.svg)](#esp32-s3-hardware-pipeline)
-[![crates.io](https://img.shields.io/crates/v/wifi-densepose-ruvector.svg)](https://crates.io/crates/wifi-densepose-ruvector)
-[![Downloads](https://img.shields.io/badge/downloads-10M%2B-brightgreen.svg)](#-edge-module-catalog)
+ Módulos de borda (edge modules) são pequenos programas que rodam diretamente no ESP32 — sem internet e sem custos de nuvem.
+
+ [![Rust 1.85+](https://img.shields.io/badge/rust-1.85+-orange.svg)](https://www.rust-lang.org/)
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+ [![Tests: 1463](https://img.shields.io/badge/tests-1463%20passed-brightgreen.svg)](https://github.com/denilsude/rediofrequencia)
+ [![Docker: multi-arch](https://img.shields.io/badge/docker-amd64%20%2B%20arm64-blue.svg)](https://hub.docker.com/r/ruvnet/wifi-densepose)
+ [![Vital Signs](https://img.shields.io/badge/vital%20signs-breathing%20%2B%20heartbeat-red.svg)](#vital-sign-detection)
+ [![ESP32 Ready](https://img.shields.io/badge/ESP32--S3-CSI%20streaming-purple.svg)](#esp32-s3-hardware-pipeline)
+ [![crates.io](https://img.shields.io/crates/v/wifi-densepose-ruvector.svg)](https://crates.io/crates/wifi-densepose-ruvector)
+ [![Downloads](https://img.shields.io/badge/downloads-10M%2B-brightgreen.svg)](#-edge-module-catalog)
 
  
-> | What | How | Speed / scale |
-> |------|-----|---------------|
-> | 🫁 **Breathing rate** | Bandpass 0.1–0.5 Hz on wrapped phase, circular variance, zero-crossing BPM ([#593](https://github.com/denilsude/rediofrequencia/issues/593)) | 6–30 BPM, real-time |
-> | 💓 **Heart rate** | Bandpass 0.8–2.0 Hz, zero-crossing BPM | 40–120 BPM, real-time |
-> | 👤 **Presence detection** | Trained head on Hugging Face ([`ruvnet/wifi-densepose-pretrained`](https://huggingface.co/ruvnet/wifi-densepose-pretrained), 100% validation accuracy) + a phase-variance fallback that needs no model | < 1 ms, ~30 s ambient calibration |
+ > **Resumo do que o projeto entrega:** respiração, batimentos, detecção de presença, estimativa de pose (17 keypoints), contagem multi-pessoa e mapeamento ambiental, tudo realizado em edge com modelos compactos.
+
 > | 🧬 **CSI embeddings** | 128-dim contrastive encoder shipped on Hugging Face, 4-bit quantised variant fits in 8 KB | **164,183 emb/s** on M4 Pro |
 > | 🦴 **17-keypoint pose estimation** | `cog-pose-estimation` Cog v0.0.1 — signed aarch64 + x86_64 binaries on GCS, loads `pose_v1.safetensors` via Candle. Train your own from paired data in 2.1 s on an RTX 5080 ([ADR-101](docs/adr/ADR-101-pose-estimation-cog.md), [benchmarks](docs/benchmarks/pose-estimation-cog.md)) | 8.4 ms cold-start on a Pi 5 |
 > | 🚶 **Motion / activity** | Motion-band power + phase acceleration | Real-time |
@@ -95,16 +94,15 @@ node scripts/mincut-person-counter.js --port 5006  # Correct person counting
 > | **Research NIC** | Intel 5300 / Atheros AR9580 | ~$50-100 | Yes | Full CSI with 3x3 MIMO |
 > | **Any WiFi** | Windows, macOS, or Linux laptop | $0 | No | RSSI-only: coarse presence and motion (see [tutorial #36](https://github.com/denilsude/rediofrequencia/issues/36)) |
 >
-> No hardware? Verify the signal processing pipeline with the deterministic reference signal: `python archive/v1/data/proof/verify.py`
->
+> Sem hardware? Execute em modo simulado usando a imagem Docker ou siga os tutoriais abaixo para testar com ESP32.
+
 ---
 
-
   <a href="https://ruvnet.github.io/rediofrequencia/">
-    <img src="assets/v2-screen.png" alt="WiFi DensePose — Live pose detection with setup guide" width="800">
+    <img src="assets/v2-screen.png" alt="Captura de tela do dashboard" width="800">
   </a>
   <br>
-  <em>Real-time pose skeleton from WiFi CSI signals — no cameras, no wearables</em>
+  <em>Esqueleto de pose em tempo real a partir de sinais CSI — sem câmeras, sem wearables</em>
   <br><br>
   <a href="https://ruvnet.github.io/rediofrequencia/"><strong>▶ Live Observatory Demo</strong></a>
   &nbsp;|&nbsp;
@@ -121,9 +119,10 @@ node scripts/mincut-person-counter.js --port 5006  # Correct person counting
 > **three.js scene gallery** at [`/three.js/`](https://ruvnet.github.io/rediofrequencia/three.js/) — five progressively richer ADR-097 demos: helpers, cinematic, GLTF skinned, FBX skinned, and a live MediaPipe→Mixamo retargeting feed driven by ESP32 CSI. Demos 04 and 05 require a local Mixamo `X Bot.fbx` (license boundary — not redistributed).
 
 
-## 🤗 Pretrained model on Hugging Face
 
-Pretrained CSI weights live at [`ruvnet/wifi-densepose-pretrained`](https://huggingface.co/ruvnet/wifi-densepose-pretrained) — 12.2M training steps on 60K frames / 610K contrastive triplets, **100% presence accuracy** on the validation set, 4-bit quantized variant fits in 8 KB. The release includes a contrastive **CSI encoder** producing 128-dim embeddings (164,183 emb/s on M4 Pro) and a **presence-detection head**. Per-node LoRA adapters are included for environment-specific fine-tuning.
+## 🤗 Modelos pré-treinados no Hugging Face
+
+Os pesos pré-treinados de CSI estão disponíveis em [`ruvnet/wifi-densepose-pretrained`](https://huggingface.co/ruvnet/wifi-densepose-pretrained) — 12,2M de passos de treino em 60K frames / 610K tripletas contrastivas. A variante quantizada em 4 bits cabe em ~8 KB. O pacote inclui um **encoder contrastivo de CSI** que produz embeddings de 128 dimensões e uma cabeça de detecção de presença. Adaptadores LoRA por nó estão disponíveis para fine-tuning específico por ambiente.
 
 ```bash
 # Download the model bundle
@@ -131,19 +130,20 @@ pip install huggingface_hub
 huggingface-cli download ruvnet/wifi-densepose-pretrained --local-dir models/wifi-densepose-pretrained
 ```
 
-**What works today vs. what's pending wiring:**
 
-| Consumer | Format used | Status |
+**O que funciona hoje vs. pendências:**
+
+| Consumidor | Formato usado | Status |
 |----------|-------------|--------|
-| Python training / evaluation / embedding extraction | `model.safetensors` | ✅ Works — load with `safetensors.torch.load_file` |
-| Inspect / re-export the bundle | `model.rvf.jsonl` (line-by-line JSON) | ✅ Works — plain JSONL |
-| Sensing-server `--model <PATH>` flag | binary RVF (`RVFS` magic) | ⚠️ Loader does not yet accept the JSONL container |
+| Treino/avaliação Python / extração de embeddings | `model.safetensors` | ✅ Funciona — carregue com `safetensors.torch.load_file` |
+| Inspeção / re-exportação do bundle | `model.rvf.jsonl` (JSONL linha-a-linha) | ✅ Funciona — JSONL simples |
+| Flag `--model <PATH>` do sensing-server | RVF binário (`RVFS` magic) | ⚠️ O carregador ainda não aceita o container JSONL |
 
-**Known gap:** the HF model ships in JSONL RVF format, but `v2/crates/wifi-densepose-sensing-server/src/rvf_container.rs` only parses the binary RVF segment format. Pointing `--model` at `model.rvf.jsonl` currently errors with `invalid magic at offset 0: expected 0x52564653, got 0x7974227B` and the live pipeline degrades to null output rather than falling back to heuristic mode — so for the live sensing-server, run **without** `--model` until a JSONL adapter lands (or the model is re-published as binary RVF). Use the weights from Python / training in the meantime.
+**Limitação conhecida:** o modelo HF é publicado em formato JSONL (RVF), enquanto `v2/crates/wifi-densepose-sensing-server/src/rvf_container.rs` atualmente apenas analisa o formato binário RVF. Apontar `--model` para `model.rvf.jsonl` pode gerar erro (`invalid magic at offset 0: expected 0x52564653, got 0x7974227B`) e degradar a saída. Para usar o sensing-server em produção local, rode sem `--model` até que haja um adaptador JSONL ou uma versão binária do modelo. Use os pesos via Python/treino enquanto isso.
 
-**Quantization choices** (all in the HF repo): `model-q2.bin` (4 KB) · `model-q4.bin` ⭐ recommended (8 KB) · `model-q8.bin` (16 KB) · `model.safetensors` full (48 KB)
+**Opções de quantização** (no repositório HF): `model-q2.bin` (4 KB) · `model-q4.bin` ⭐ recomendado (8 KB) · `model-q8.bin` (16 KB) · `model.safetensors` completo (48 KB)
 
-The separate **17-keypoint pose-estimation model** is not in this release — pipeline is implemented but keypoint weights are still pending. Tracked in [#509](https://github.com/denilsude/rediofrequencia/issues/509); see [ADR-079](docs/adr/ADR-079-camera-supervised-pose-finetune.md) phases P7–P9.
+O modelo separado de **estimativa de pose (17 keypoints)** não está incluído neste release — a pipeline está implementada, mas os pesos dos keypoints ainda não foram publicados (ver [#509](https://github.com/denilsude/rediofrequencia/issues/509) e [ADR-079](docs/adr/ADR-079-camera-supervised-pose-finetune.md) fases P7–P9).
 
 
 ## 🧩 Edge Module Catalog
@@ -318,41 +318,43 @@ Each module is a small signed binary (~400 KB) that runs alongside the WiFi-Dens
 </details>
 
 
-## 🔬 How It Works
 
-WiFi routers flood every room with radio waves. When a person moves — or even breathes — those waves scatter differently. WiFi DensePose reads that scattering pattern and reconstructs what happened:
+## 🔬 Como funciona
+
+Roteadores WiFi preenchem o ambiente com ondas de rádio. Quando uma pessoa se move — ou mesmo respira — essas ondas são espalhadas de maneira diferente. O `radiofrequencia` lê esse padrão de espalhamento e reconstrói o que ocorreu:
 
 ```
-WiFi Router → radio waves pass through room → hit human body → scatter
-    ↓
-ESP32 mesh (4-6 nodes) captures CSI on channels 1/6/11 via TDM protocol
-    ↓
-Multi-Band Fusion: 3 channels × 56 subcarriers = 168 virtual subcarriers per link
-    ↓
-Multistatic Fusion: N×(N-1) links → attention-weighted cross-viewpoint embedding
-    ↓
-Coherence Gate: accept/reject measurements → stable for days without tuning
-    ↓
-Signal Processing: Hampel, SpotFi, Fresnel, BVP, spectrogram → clean features
-    ↓
-AI Backbone (RuVector): attention, graph algorithms, compression, field model
-    ↓
-Signal-Line Protocol (CRV): 6-stage gestalt → sensory → topology → coherence → search → model
-    ↓
-Neural Network: processed signals → 17 body keypoints + vital signs + room model
-    ↓
-Output: real-time pose, breathing, heart rate, room fingerprint, drift alerts
+Roteador WiFi → ondas de rádio atravessam a sala → atingem o corpo humano → espalham
+  ↓
+Malha ESP32 (4-6 nós) captura CSI nos canais 1/6/11 via protocolo TDM
+  ↓
+Fusão Multi-Banda: 3 canais × 56 subportadoras = 168 subportadoras virtuais por link
+  ↓
+Fusão Multistática: N×(N-1) links → embedding cross-viewpoint com atenção
+  ↓
+Portão de Coerência: aceita/rejeita medições → estável por dias sem ajuste fino
+  ↓
+Processamento de Sinal: Hampel, SpotFi, Fresnel, BVP, espectrograma → features limpas
+  ↓
+Backbone de IA (RuVector): atenção, algoritmos de grafo, compressão, modelo de campo
+  ↓
+Protocolo Signal-Line (CRV): 6 estágios → sensorial → topologia → coerência → busca → modelo
+  ↓
+Rede Neural: sinais processados → 17 keypoints corporais + sinais vitais + modelo de sala
+  ↓
+Saída: pose em tempo real, respiração, batimentos, fingerprint da sala, alertas de drift
 ```
 
-No training cameras required — the [Self-Learning system (ADR-024)](docs/adr/ADR-024-contrastive-csi-embedding-model.md) bootstraps from raw WiFi data alone. [MERIDIAN (ADR-027)](docs/adr/ADR-027-cross-environment-domain-generalization.md) ensures the model works in any room, not just the one it trained in.
+Não são necessárias câmeras de treino — o [sistema Self-Learning (ADR-024)](docs/adr/ADR-024-contrastive-csi-embedding-model.md) se inicia a partir de dados WiFi brutos. [MERIDIAN (ADR-027)](docs/adr/ADR-027-cross-environment-domain-generalization.md) garante que o modelo generalize para diferentes salas.
 
 ---
 
-## 🏢 Use Cases & Applications
 
-WiFi sensing works anywhere WiFi exists. No new hardware in most cases — just software on existing access points or a $8 ESP32 add-on. Because there are no cameras, deployments avoid privacy regulations (GDPR video, HIPAA imaging) by design.
+## 🏢 Casos de Uso e Aplicações
 
-**Scaling:** Each AP distinguishes ~3-5 people (56 subcarriers). Multi-AP multiplies linearly — a 4-AP retail mesh covers ~15-20 occupants. No hard software limit; the practical ceiling is signal physics.
+O sensoriamento por WiFi funciona em qualquer lugar onde haja WiFi. Na maioria dos casos não é necessário novo hardware — basta software nos pontos de acesso existentes ou um módulo ESP32 (~US$8) adicional. Por não usar câmeras, implantações evitam muitas restrições de privacidade (por exemplo GDPR sobre vídeo).
+
+**Escalabilidade:** Cada AP consegue distinguir ~3–5 pessoas (56 subportadoras). Multi-AP escala de forma aproximada linear — uma malha de 4 APs cobre ~15–20 ocupantes. O limite prático é ditado pela física do sinal.
 
 | | Why WiFi sensing wins | Traditional alternative |
 |---|----------------------|----------------------|
@@ -434,10 +436,11 @@ These scenarios exploit WiFi's ability to penetrate solid materials — concrete
 
 ---
 
-<details>
-<summary><strong>🧠 Self-Learning WiFi AI (ADR-024)</strong> — Adaptive recognition, self-optimization, and intelligent anomaly detection</summary>
 
-Every WiFi signal that passes through a room creates a unique fingerprint of that space. WiFi-DensePose already reads these fingerprints to track people, but until now it threw away the internal "understanding" after each reading. The Self-Learning WiFi AI captures and preserves that understanding as compact, reusable vectors — and continuously optimizes itself for each new environment.
+<details>
+<summary><strong>🧠 Self-Learning WiFi AI (ADR-024)</strong> — Reconhecimento adaptativo, auto-otimização e detecção inteligente de anomalias</summary>
+
+Cada sinal WiFi que atravessa uma sala cria uma impressão digital única desse espaço. O `radiofrequencia` já lê essas impressões para rastrear pessoas, mas antes descartava a "compreensão" interna após cada leitura. O Self-Learning WiFi AI captura e preserva esse entendimento como vetores compactos e reutilizáveis — e se otimiza continuamente para cada ambiente novo.
 
 **What it does in plain terms:**
 - Turns any WiFi signal into a 128-number "fingerprint" that uniquely describes what's happening in a room
