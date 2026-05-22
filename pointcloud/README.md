@@ -1,15 +1,15 @@
-# RuView — Live 3D Point Cloud Viewer
+# radiofrequencia — Live 3D Point Cloud Viewer
 
-Hosted at: https://ruvnet.github.io/RuView/pointcloud/
+Hosted at: https://ruvnet.github.io/rediofrequencia/pointcloud/
 
 ## Modes
 
 - Default — synthetic in-browser demo (no backend, no network calls).
 - `?backend=auto` — fetch from `/api/splats` on the same origin
-  (only works when the viewer is served by `ruview-pointcloud serve`).
+  (only works when the viewer is served by `radiofrequencia-pointcloud serve`).
 - `?backend=<url>` — fetch from `<url>/api/splats`. The intended
   local-ESP32 use is `?backend=http://127.0.0.1:9880`: run
-  `ruview-pointcloud serve --bind 127.0.0.1:9880` on the same
+  `radiofrequencia-pointcloud serve --bind 127.0.0.1:9880` on the same
   machine with your ESP32 streaming CSI to UDP port 3333, then
   visit the URL above. The local server's CorsLayer permits
   requests from `https://ruvnet.github.io`, and modern browsers
