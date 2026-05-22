@@ -1,1 +1,1 @@
-if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/RuView/nvsim/sw.js', { scope: '/RuView/nvsim/' })})}
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/radiofrequencia/nvsim/sw.js', { scope: '/radiofrequencia/nvsim/' })})}
