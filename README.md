@@ -5,18 +5,6 @@
     <img src="assets/logo-radiofrequencia.svg" alt="radiofrequencia" width="100%">
   </a>
 </p>
-<p align="center">
-  <a href="https://cognitum.one/seed">
-    <img src="assets/seed.png" alt="Cognitum Seed" width="100%">
-  </a>
-</p>
-
-> **Beta Software** — Under active development. APIs and firmware may change. Known limitations:
-> - ESP32-C3 and original ESP32 are not supported (single-core, insufficient for CSI DSP)
-> - Single ESP32 deployments have limited spatial resolution — use 2+ nodes or add a [Cognitum Seed](https://cognitum.one) for best results
-> - Camera-free pose accuracy is limited (PCK@20 ≈ 2.5% with proxy labels) — [camera ground-truth training](docs/adr/ADR-079-camera-ground-truth-training.md) targets **35%+ PCK@20**; the pipeline is implemented, but the data-collection and evaluation phases (ADR-079 P7–P9) are still pending, so no measured camera-supervised PCK@20 has been published yet
->
-> Contributions and bug reports welcome at [Issues](https://github.com/denilsude/rediofrequencia/issues).
 
 ## **See through walls with WiFi** ##
 
