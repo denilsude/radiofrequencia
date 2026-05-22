@@ -1,4 +1,4 @@
-# Ghost Murmur on RuView — A Specification for an Open, Honest, Multi-Modal Heartbeat Mesh
+# Ghost Murmur on radiofrequencia — A Specification for an Open, Honest, Multi-Modal Heartbeat Mesh
 
 ## SOTA Research + Build Spec — Quantum Sensing Series (16/—)
 
@@ -9,7 +9,7 @@
 | **Status** | Research spec — speculative architecture, **not** a delivered system. Educational + safety-critical use cases only. |
 | **Refines** | ADR-089 (nvsim simulator), ADR-029 (RuvSense multistatic), ADR-021 (vitals), ADR-022 (wifiscan) |
 | **Companion docs** | `14-nv-diamond-sensor-simulator.md`, `15-nvsim-implementation-plan.md`, `13-nv-diamond-neural-magnetometry.md` |
-| **Audience** | RuView contributors, sensing researchers, journalists fact-checking the news, students learning multimodal RF + quantum sensing |
+| **Audience** | radiofrequencia contributors, sensing researchers, journalists fact-checking the news, students learning multimodal RF + quantum sensing |
 
 ---
 
@@ -20,12 +20,12 @@ In early April 2026, the CIA reportedly used a Lockheed Skunk Works system calle
 This doc does two things:
 
 1. **Reality-check the news.** Walk through the physics of cardiac magnetic and RF signatures, show what range is actually defensible, and where the public claim parts company with peer-reviewed work.
-2. **Map a sober version onto RuView.** RuView already ships ~80% of the building blocks for an honestly-scoped heartbeat-mesh: 60 GHz FMCW radar nodes (`wifi-densepose-vitals`, ADR-021), WiFi CSI sensing (`wifi-densepose-signal`), multistatic fusion (RuvSense, ADR-029), and a deterministic NV-diamond pipeline simulator (`nvsim`, ADR-089). What we *don't* ship is a magic 40-mile sensor — and we're explicit about why nobody does.
+2. **Map a sober version onto radiofrequencia.** radiofrequencia already ships ~80% of the building blocks for an honestly-scoped heartbeat-mesh: 60 GHz FMCW radar nodes (`wifi-densepose-vitals`, ADR-021), WiFi CSI sensing (`wifi-densepose-signal`), multistatic fusion (RuvSense, ADR-029), and a deterministic NV-diamond pipeline simulator (`nvsim`, ADR-089). What we *don't* ship is a magic 40-mile sensor — and we're explicit about why nobody does.
 
-This is a research spec, not a build directive. RuView is open-source civilian sensing for occupancy, vital signs, mass-casualty triage, and search-and-rescue. The spec exists so that:
+This is a research spec, not a build directive. radiofrequencia is open-source civilian sensing for occupancy, vital signs, mass-casualty triage, and search-and-rescue. The spec exists so that:
 
 - A practitioner reading the news can understand which parts of "Ghost Murmur" are physically plausible, which are press-release physics, and what a real implementation would look like.
-- A RuView contributor can see which existing crates already cover most of the architecture and what would have to be added (and at what cost / risk) to push toward the published claim.
+- A radiofrequencia contributor can see which existing crates already cover most of the architecture and what would have to be added (and at what cost / risk) to push toward the published claim.
 - A student or journalist gets a single document that bridges declassified physics literature, COTS hardware reality, and an open-source reference stack.
 
 ---
@@ -115,11 +115,11 @@ If the magnetic story is even partially real, the most physically defensible int
 
 ---
 
-## 3. The RuView mapping
+## 3. The radiofrequencia mapping
 
-RuView already ships, today, the building blocks for a *sober* version of the same concept — a **multi-modal heartbeat mesh** that detects, localises, and tracks human vital signs at room-to-building-to-block scale, using commodity hardware in the $5–$50 per node range and a quantum-sensor *simulator* for the magnetometry tier.
+radiofrequencia already ships, today, the building blocks for a *sober* version of the same concept — a **multi-modal heartbeat mesh** that detects, localises, and tracks human vital signs at room-to-building-to-block scale, using commodity hardware in the $5–$50 per node range and a quantum-sensor *simulator* for the magnetometry tier.
 
-| Press claim about Ghost Murmur | RuView-equivalent capability today | Crate / ADR | Honest range |
+| Press claim about Ghost Murmur | radiofrequencia-equivalent capability today | Crate / ADR | Honest range |
 |---|---|---|---|
 | "NV-diamond quantum magnetometry" | Deterministic NV pipeline simulator (forward model, not hardware) | `nvsim` / ADR-089 | Simulator — no physical sensor yet |
 | "AI strips environmental noise" | RuvSense multistatic fusion + AETHER re-ID | `wifi-densepose-signal/ruvsense/`, ADR-029, ADR-024 | Mature |
@@ -131,7 +131,7 @@ The architectural pattern: **rings of sensors of decreasing cost and increasing 
 
 ---
 
-## 4. Architecture: the three-tier RuView heartbeat mesh
+## 4. Architecture: the three-tier radiofrequencia heartbeat mesh
 
 The proposed architecture has three layers, each with a different physical modality and a different role in the fusion graph. Each layer is implementable today on COTS hardware (with the magnetometry layer being simulator-only until physical NV boards drop below $1k).
 
@@ -174,7 +174,7 @@ Each tier *individually* is too weak to make the press-release claim. Their *fus
 - **Indoor occupancy + vital signs at room scale**: shipping today. ESP32-S3 mesh + 60 GHz radar + breathing extraction. Sub-meter localisation, ±2 bpm heart rate, ±0.5 br/min respiration.
 - **Through-wall presence + breathing at building scale**: shipping today. WiFi CSI alone, 10–30 m. ±5 br/min respiration.
 - **Room-to-room transition tracking**: shipping (ADR-029 cross-room module). Environment fingerprinting + Kalman re-ID.
-- **Outdoor presence at 50–200 m with directional WiFi or mmWave**: feasible with directional antennas + FCC Part 15 power. Not currently in the RuView stack.
+- **Outdoor presence at 50–200 m with directional WiFi or mmWave**: feasible with directional antennas + FCC Part 15 power. Not currently in the radiofrequencia stack.
 - **Search-and-rescue cardiac confirmation at 0.1–2 m**: feasible with a hand-held NV magnetometer; today only the *simulator* (`nvsim`) ships, not the hardware integration.
 - **Multi-mile single-heartbeat detection**: not feasible. Press-release physics.
 
@@ -182,7 +182,7 @@ Each tier *individually* is too weak to make the press-release claim. Their *fus
 
 ## 5. Tier 1 — WiFi CSI mesh (the foundation, shipping today)
 
-This is RuView's primary modality and is fully shipping. The crates (`wifi-densepose-signal`, `wifi-densepose-mat`, `wifi-densepose-train`, etc.) and ESP32-S3 firmware have been validated on real hardware (COM7, MAC `3c:0f:02:e9:b5:f8`) per ADR-028 with deterministic SHA-256 witness verification.
+This is radiofrequencia's primary modality and is fully shipping. The crates (`wifi-densepose-signal`, `wifi-densepose-mat`, `wifi-densepose-train`, etc.) and ESP32-S3 firmware have been validated on real hardware (COM7, MAC `3c:0f:02:e9:b5:f8`) per ADR-028 with deterministic SHA-256 witness verification.
 
 ### 5.1 What it gives the heartbeat mesh
 
@@ -211,11 +211,11 @@ A practical mesh deployment for the heartbeat-mesh use case looks like 6–12 ES
 
 ## 6. Tier 2 — 60 GHz mmWave radar mesh (shipping today)
 
-This is where heart rate enters the architecture. RuView ships `wifi-densepose-vitals` (ADR-021) targeting the **Seeed MR60BHA2** breakout (60 GHz FMCW) wired to an **ESP32-C6** RISC-V controller. Total cost ~$15 per node.
+This is where heart rate enters the architecture. radiofrequencia ships `wifi-densepose-vitals` (ADR-021) targeting the **Seeed MR60BHA2** breakout (60 GHz FMCW) wired to an **ESP32-C6** RISC-V controller. Total cost ~$15 per node.
 
 ### 6.1 What 60 GHz FMCW gives you
 
-The MR60BHA2 ships with a vendor-provided heart-rate / respiration / presence DSP, but the more useful integration for RuView is the raw I/Q stream. From there, the standard pipeline is:
+The MR60BHA2 ships with a vendor-provided heart-rate / respiration / presence DSP, but the more useful integration for radiofrequencia is the raw I/Q stream. From there, the standard pipeline is:
 
 1. **Range-Doppler FFT** → distance + radial velocity per scatterer
 2. **CFAR detection** → find the ~10 cm² chest-wall scatterer at 1–3 m
@@ -233,19 +233,19 @@ The MR60BHA2 ships with a vendor-provided heart-rate / respiration / presence DS
 
 ### 6.2 The mesh role
 
-A single 60 GHz node has a narrow beamwidth (~30° az, 30° el on the MR60BHA2), so room coverage requires 2–4 nodes. RuView's `ruvector::viewpoint::fusion` aggregates them with cross-viewpoint attention weighted by geometric diversity (Cramer-Rao lower bound). This is exactly the architecture you'd want for a "find a live person in a room" detector.
+A single 60 GHz node has a narrow beamwidth (~30° az, 30° el on the MR60BHA2), so room coverage requires 2–4 nodes. radiofrequencia's `ruvector::viewpoint::fusion` aggregates them with cross-viewpoint attention weighted by geometric diversity (Cramer-Rao lower bound). This is exactly the architecture you'd want for a "find a live person in a room" detector.
 
 The honest range cap is ~10 m for HR detection in clear LOS. Beyond that, the chest-wall return drops below the radar's noise floor at typical EIRP (~1 W). Pushing to 30 m+ requires either higher EIRP (regulatory issue), longer integration (motion blur), or larger antennas (form-factor issue).
 
 ### 6.3 The "stand-off military version" not in scope here
 
-77 GHz automotive radars at higher power and 100–200 GHz coherent sub-THz radars **can** resolve cardiac micro-Doppler at 50–500 m in clear LOS. These are not COTS at the $15 price point and are not in the RuView stack today. They are also subject to ITAR / export-control review and **explicitly out of scope** for this open-source project.
+77 GHz automotive radars at higher power and 100–200 GHz coherent sub-THz radars **can** resolve cardiac micro-Doppler at 50–500 m in clear LOS. These are not COTS at the $15 price point and are not in the radiofrequencia stack today. They are also subject to ITAR / export-control review and **explicitly out of scope** for this open-source project.
 
 ---
 
 ## 7. Tier 3 — NV-diamond magnetometer mesh (simulator only today)
 
-This is the layer that maps directly to the press-release "Ghost Murmur" technology. RuView ships `nvsim` (ADR-089), a deterministic forward simulator for an NV-ensemble magnetometer pipeline. **It does not control physical hardware.** It is a tool for designing fusion algorithms, validating signal-processing chains, and stress-testing what physical performance you would actually need from a hypothetical sensor to make a given system-level claim true.
+This is the layer that maps directly to the press-release "Ghost Murmur" technology. radiofrequencia ships `nvsim` (ADR-089), a deterministic forward simulator for an NV-ensemble magnetometer pipeline. **It does not control physical hardware.** It is a tool for designing fusion algorithms, validating signal-processing chains, and stress-testing what physical performance you would actually need from a hypothetical sensor to make a given system-level claim true.
 
 ### 7.1 What `nvsim` already simulates
 
@@ -275,7 +275,7 @@ The 1 m case is plausible **with** a 2–4 sensor gradiometric array and a magne
 
 ### 7.3 What `nvsim` is for
 
-The simulator's role is **system-design honesty**. Before anyone builds a physical NV node for RuView, you should be able to drop the sensor model into the multistatic fusion graph and answer:
+The simulator's role is **system-design honesty**. Before anyone builds a physical NV node for radiofrequencia, you should be able to drop the sensor model into the multistatic fusion graph and answer:
 
 - "If my NV node has 100 pT/√Hz sensitivity, what's the joint posterior P(human alive at (x,y)) given my CSI + 60 GHz + NV evidence at 0.5 m, 2 m, 5 m?"
 - "What sensitivity does my NV node need to add useful information beyond the 60 GHz radar at 2 m?"
@@ -294,9 +294,9 @@ The "AI strips environmental noise to isolate cardiac signal" line in the news i
 3. **Bayesian fusion** combines them with priors (room geometry, human anatomy, expected HR/BR ranges).
 4. **AI** lives in the *learned* parts: AETHER re-ID embeddings, MERIDIAN domain-generalisation, gesture DTW templates, intention pre-movement nets. Not in "magic noise stripping."
 
-RuView's `ruvector::viewpoint::attention::CrossViewpointAttention` is the fusion primitive: a softmax over per-sensor evidence weighted by a geometric-bias matrix `G_bias` (Cramer-Rao Fisher information). The fusion is **physics-aware**: a sensor with low Fisher information for the target's location automatically gets low attention weight.
+radiofrequencia's `ruvector::viewpoint::attention::CrossViewpointAttention` is the fusion primitive: a softmax over per-sensor evidence weighted by a geometric-bias matrix `G_bias` (Cramer-Rao Fisher information). The fusion is **physics-aware**: a sensor with low Fisher information for the target's location automatically gets low attention weight.
 
-This is **not** the press's "AI does magic." It's standard sensor-fusion theory. The novelty in RuView is not the fusion — it's the fact that all the layers (CSI / 60 GHz / NV-simulator) live in one Rust workspace with a coherent type system and a single fusion crate.
+This is **not** the press's "AI does magic." It's standard sensor-fusion theory. The novelty in radiofrequencia is not the fusion — it's the fact that all the layers (CSI / 60 GHz / NV-simulator) live in one Rust workspace with a coherent type system and a single fusion crate.
 
 ### 8.1 Concrete fusion data flow
 
@@ -323,32 +323,32 @@ This is **already** the architecture in `ruvector::viewpoint::fusion::Multistati
 
 ## 9. Privacy, ethics, legal — the part the press skipped
 
-A heartbeat-detecting mesh is dual-use. It can find a heart-attack victim trapped in rubble (the original Mass Casualty Assessment Tool / `wifi-densepose-mat` use case, ADR-014) **or** it can surveil people in their homes. RuView's project line is unambiguous on this:
+A heartbeat-detecting mesh is dual-use. It can find a heart-attack victim trapped in rubble (the original Mass Casualty Assessment Tool / `wifi-densepose-mat` use case, ADR-014) **or** it can surveil people in their homes. radiofrequencia's project line is unambiguous on this:
 
 1. **Civilian, opt-in deployments only.** Search-and-rescue, elder-care, building occupancy for HVAC, hospital ICU vitals. Not surveillance.
-2. **No directional pursuit.** RuView does not ship beam-steering, target-following, or remote person-of-interest tracking primitives. The mesh is designed for fixed-area observation with consent.
+2. **No directional pursuit.** radiofrequencia does not ship beam-steering, target-following, or remote person-of-interest tracking primitives. The mesh is designed for fixed-area observation with consent.
 3. **Data minimisation.** The fused output is `(presence, HR, BR, pose, p_alive)` — not raw CSI / radar / NV streams. Raw streams are processed at the edge and discarded after fusion.
 4. **PII detection on the wire.** ADR-040 (PII gates) blocks identifying biometric streams from leaving the local mesh without explicit user authorisation.
 5. **Adversarial-signal detection.** `ruvsense::adversarial` flags physically-impossible signal patterns that would arise from a malicious node trying to inject false detections — protection against mesh attacks.
-6. **No export-controlled hardware.** RuView targets <$50 COTS components. ITAR / EAR-listed sub-THz coherent radars and shielded NV ensembles are explicitly out of scope.
+6. **No export-controlled hardware.** radiofrequencia targets <$50 COTS components. ITAR / EAR-listed sub-THz coherent radars and shielded NV ensembles are explicitly out of scope.
 
-The Ghost Murmur press story exists in a different ethical universe — covert military intelligence ops with no consent, no notice, and no opt-out. **RuView is not that.** This spec is the open-source version: same physics, opposite governance.
+The Ghost Murmur press story exists in a different ethical universe — covert military intelligence ops with no consent, no notice, and no opt-out. **radiofrequencia is not that.** This spec is the open-source version: same physics, opposite governance.
 
 ### 9.1 Legal boundaries (US, non-exhaustive)
 
 - **18 USC §2511** (federal wiretap) — RF sensing of presence and vital signs is generally not a "wire/oral communication" intercept, but state-law recording statutes can apply if audio is involved.
 - **HIPAA** — vital-sign data from medical contexts requires HIPAA-covered handling.
-- **FCC Part 15** — ESP32 and 60 GHz radar emissions must remain compliant (RuView firmware defaults to compliant power).
-- **ITAR / EAR** — high-power coherent sub-THz radar, shielded NV ensembles, and certain ML models trained on pose data may be export-controlled. RuView avoids this category.
+- **FCC Part 15** — ESP32 and 60 GHz radar emissions must remain compliant (radiofrequencia firmware defaults to compliant power).
+- **ITAR / EAR** — high-power coherent sub-THz radar, shielded NV ensembles, and certain ML models trained on pose data may be export-controlled. radiofrequencia avoids this category.
 - **State biometric laws (BIPA, CCPA, similar)** — pose / gait / cardiac signatures may qualify as biometric identifiers; consent regimes vary.
 
-If you are deploying RuView outside a controlled research setting, talk to a lawyer who actually does this for a living.
+If you are deploying radiofrequencia outside a controlled research setting, talk to a lawyer who actually does this for a living.
 
 ---
 
-## 10. How to actually implement, on RuView, today
+## 10. How to actually implement, on radiofrequencia, today
 
-This section is the build guide. It assumes you're starting from a clean RuView checkout and want a working 3-node CSI mesh + 1 mmWave node + a simulated NV row, fused into a single `(x, y, HR, BR, p_alive)` stream.
+This section is the build guide. It assumes you're starting from a clean radiofrequencia checkout and want a working 3-node CSI mesh + 1 mmWave node + a simulated NV row, fused into a single `(x, y, HR, BR, p_alive)` stream.
 
 ### 10.1 Hardware bill of materials
 
@@ -381,7 +381,7 @@ Provision each CSI node with target IP and channel:
 ```bash
 python firmware/esp32-csi-node/provision.py \
   --port COM7 \
-  --ssid "RuViewMesh" \
+  --ssid "radiofrequenciaMesh" \
   --password "your-mesh-key" \
   --target-ip 192.168.50.20 \
   --channel 6
@@ -394,8 +394,8 @@ Repeat with `--target-ip 192.168.50.21`, `.22` for the other two nodes.
 On the Pi or mini-PC:
 
 ```bash
-git clone https://github.com/ruvnet/RuView.git
-cd RuView/v2
+git clone https://github.com/denilsude/rediofrequencia.git
+cd radiofrequencia/v2
 cargo build --release \
   --bin wifi-densepose \
   --bin wifi-densepose-sensing-server \
@@ -490,7 +490,7 @@ This is the closest open-source approximation to "the operator console for a Gho
 
 ## 11. Open research questions
 
-Things that would *materially* push this stack closer to a credible "Ghost Murmur" capability — and which RuView is open to PRs on:
+Things that would *materially* push this stack closer to a credible "Ghost Murmur" capability — and which radiofrequencia is open to PRs on:
 
 1. **Sub-$1k NV-ensemble board**. Rumored development at QDM Tech, NVision, Adamas Nanotechnologies; nothing shipping yet.
 2. **Active stand-off cardiac radar at 76–81 GHz** with FCC-compliant power. Possible but $$ for the chipset.
@@ -502,9 +502,9 @@ Things that would *materially* push this stack closer to a credible "Ghost Murmu
 
 ---
 
-## 12. Comparison: RuView vs. Ghost Murmur (as reported)
+## 12. Comparison: radiofrequencia vs. Ghost Murmur (as reported)
 
-| Dimension | RuView heartbeat mesh (this spec) | Press-claimed Ghost Murmur |
+| Dimension | radiofrequencia heartbeat mesh (this spec) | Press-claimed Ghost Murmur |
 |---|---|---|
 | Range | 0.5–30 m | tens of miles |
 | Modalities | WiFi CSI + 60 GHz radar + NV simulator | NV-diamond magnetometry only (per press) |
@@ -517,7 +517,7 @@ Things that would *materially* push this stack closer to a credible "Ghost Murmu
 | Ethics governance | civilian opt-in only | covert military |
 | Build today on $200 | yes | no |
 
-**The honest framing**: RuView is not Ghost Murmur. Ghost Murmur (as reported) is not Ghost Murmur either — the physics doesn't support it. Both names point at the same family of capabilities. RuView is the one you can actually build in your garage.
+**The honest framing**: radiofrequencia is not Ghost Murmur. Ghost Murmur (as reported) is not Ghost Murmur either — the physics doesn't support it. Both names point at the same family of capabilities. radiofrequencia is the one you can actually build in your garage.
 
 ---
 
@@ -554,7 +554,7 @@ Things that would *materially* push this stack closer to a credible "Ghost Murmu
 - Calcalist — "Spy tech or science fiction? Experts question CIA Ghost Murmur claims."
 - Hacker News thread #47679241 — community discussion.
 
-### RuView ADRs and crates referenced
+### radiofrequencia ADRs and crates referenced
 
 - ADR-014 — SOTA signal processing
 - ADR-021 — ESP32 CSI-grade vital sign extraction
@@ -573,11 +573,12 @@ Things that would *materially* push this stack closer to a credible "Ghost Murmu
 ## 14. Status, license, and how this doc evolves
 
 - **Status**: research spec, advisory only. **Not** a delivered system. **Not** a recommendation to deploy at scale.
-- **License**: Apache-2.0 OR MIT (matches the rest of RuView).
+- **License**: Apache-2.0 OR MIT (matches the rest of radiofrequencia).
 - **Versioning**: bump the doc number (16/17/...) for a major rework; in-place edits for typos and citation fixes.
 - **Disagreements welcome**. If you can show a peer-reviewed reference that pushes any number in §2 by an order of magnitude, please open a PR or issue.
-- **No classified content.** This doc is built entirely from public news reporting, peer-reviewed physics, and RuView's own open-source architecture. Nothing here is sourced from leaks or classified material; if you have such material, do not contribute it to this document.
+- **No classified content.** This doc is built entirely from public news reporting, peer-reviewed physics, and radiofrequencia's own open-source architecture. Nothing here is sourced from leaks or classified material; if you have such material, do not contribute it to this document.
 
 ---
 
-*RuView is an open-source civilian sensing platform. It is not affiliated with the United States government, the CIA, Lockheed Martin, or any classified program. References to "Ghost Murmur" in this document refer exclusively to the publicly-reported program of that name as covered in the open press in April 2026.*
+*radiofrequencia is an open-source civilian sensing platform. It is not affiliated with the United States government, the CIA, Lockheed Martin, or any classified program. References to "Ghost Murmur" in this document refer exclusively to the publicly-reported program of that name as covered in the open press in April 2026.*
+

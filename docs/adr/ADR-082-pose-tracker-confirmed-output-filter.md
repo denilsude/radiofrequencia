@@ -5,7 +5,7 @@
 | **Status**  | Accepted — implemented in commit landing this ADR                     |
 | **Date**    | 2026-04-25                                                            |
 | **Authors** | ruv                                                                   |
-| **Issue**   | [#420 — "24 ghost people in the UI with 3× ESP32-S3 nodes"](https://github.com/ruvnet/RuView/issues/420) |
+| **Issue**   | [#420 — "24 ghost people in the UI with 3× ESP32-S3 nodes"](https://github.com/denilsude/rediofrequencia/issues/420) |
 | **Depends** | ADR-026 (track lifecycle), ADR-024 (AETHER re-ID embeddings)          |
 
 ## Context
@@ -183,3 +183,4 @@ revisit `birth_hits` calibration.
 * PR #425 — Workspace `--no-default-features` build fix (unrelated, just
   the prior PR on this branch line)
 * Issue #420 — original report
+

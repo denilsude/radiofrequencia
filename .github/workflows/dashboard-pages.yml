@@ -70,7 +70,7 @@ jobs:
       - name: Build dashboard
         working-directory: dashboard
         env:
-          NVSIM_BASE: /RuView/nvsim/
+          NVSIM_BASE: /radiofrequencia/nvsim/
         run: npm run build
 
       - name: Deploy to gh-pages/nvsim/
@@ -80,8 +80,9 @@ jobs:
           publish_dir: ./dashboard/dist
           destination_dir: nvsim
           # CRITICAL: preserves observatory/, pose-fusion/, root index.html
-          # and any other RuView demos already on gh-pages.
+          # and any other radiofrequencia demos already on gh-pages.
           keep_files: true
           commit_message: 'deploy(nvsim): ${{ github.sha }}'
           user_name: 'github-actions[bot]'
           user_email: 'github-actions[bot]@users.noreply.github.com'
+

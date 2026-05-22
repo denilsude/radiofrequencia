@@ -22,7 +22,7 @@ Recommended (per Moments Accountant, δ=1e-5):
 | Profile | σ | Rounds | Total ε | Use |
 |---|---:|---:|---:|---|
 | Conservative (medical-grade) | 1.5 | 50 | **2.0** | HIPAA-aligned |
-| Standard (typical RuView) | 1.0 | 100 | **5.0** | Most cogs |
+| Standard (typical radiofrequencia) | 1.0 | 100 | **5.0** | Most cogs |
 | Lenient | 0.5 | 100 | 8.0 | Below ε=10 community soft-bound |
 
 ## On-device-only primitive list (R15-binding)
@@ -90,3 +90,4 @@ The per-occupant feature surface (R14 V1/V2/V3) now has **formal (ε, δ) privac
 - Loop retrospective / 00-summary.md (premature — ~5h still on clock)
 
 ~5.3h to cron stop. **15 ticks landed. PROGRESS.md research agenda + 1 follow-up ADR closed.**
+

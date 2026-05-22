@@ -4,7 +4,7 @@
 |-------------|------------------------------------------------|
 | **Status**  | Accepted                                       |
 | **Date**    | 2026-03-13 (updated 2026-03-14)                |
-| **Authors** | RuView Team                                    |
+| **Authors** | radiofrequencia Team                                    |
 | **Relates** | ADR-018 (binary frame), ADR-039 (edge intel), ADR-040 (WASM), ADR-057 (build guard), ADR-060 (channel/MAC filter) |
 
 ## Context
@@ -1030,3 +1030,4 @@ Alternative to QEMU with better peripheral modeling for some platforms.
 8. **CI NVS validation** — Added `nvs-matrix-validate` job that generates all 14 binaries and verifies sizes
 9. **CI matrix expanded** — Added `edge-tier1`, `boundary-max`, `boundary-min` to QEMU test matrix (4 → 7 configs)
 10. **QEMU cache key** — Uses `github.run_id` with restore-keys fallback to prevent stale QEMU builds
+

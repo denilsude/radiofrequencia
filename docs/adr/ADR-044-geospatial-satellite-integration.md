@@ -4,7 +4,7 @@
 Accepted
 
 ## Context
-RuView generates real-time 3D point clouds from camera + WiFi CSI, but these exist in a local coordinate frame with no geographic reference. Integrating free satellite imagery, terrain elevation, and map data provides environmental context that enables the ruOS brain to reason about the physical world beyond the room.
+radiofrequencia generates real-time 3D point clouds from camera + WiFi CSI, but these exist in a local coordinate frame with no geographic reference. Integrating free satellite imagery, terrain elevation, and map data provides environmental context that enables the ruOS brain to reason about the physical world beyond the room.
 
 ## Decision
 
@@ -19,7 +19,7 @@ RuView generates real-time 3D point clouds from camera + WiFi CSI, but these exi
 | Open Meteo | Weather | Point | Hourly | JSON |
 
 ### Architecture
-Pure Rust implementation in `wifi-densepose-geo` crate. No GDAL/PROJ/GEOS — coordinate transforms implemented directly (~250 LOC). Tile caching on disk at `~/.local/share/ruview/geo-cache/`.
+Pure Rust implementation in `wifi-densepose-geo` crate. No GDAL/PROJ/GEOS — coordinate transforms implemented directly (~250 LOC). Tile caching on disk at `~/.local/share/radiofrequencia/geo-cache/`.
 
 ### Coordinate System
 - WGS84 for geographic coordinates
@@ -63,3 +63,4 @@ WET files filtered by geographic URL patterns provide hyperlocal context.
 - Initial data fetch requires internet (~2MB tiles + ~25MB DEM)
 - Cached data becomes stale (mitigated by nightly refresh)
 - IP geolocation has ~1km accuracy (mitigated by manual override)
+

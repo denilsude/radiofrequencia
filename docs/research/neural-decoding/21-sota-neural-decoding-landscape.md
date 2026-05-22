@@ -594,7 +594,7 @@ speed. MEG's temporal resolution enabled tracking of dynamic visual processing.
 
 ---
 
-## 9. Strategic Implications for RuView Architecture
+## 9. Strategic Implications for radiofrequencia Architecture
 
 ### 9.1 What the SOTA Map Tells Us
 
@@ -729,3 +729,4 @@ The question is no longer "can this work?" but "who will build it first?"
 *This document is part of the RF Topological Sensing research series. It positions the
 RuVector + dynamic mincut architecture within the 2023–2026 neural decoding landscape,
 identifying the unexplored niche of real-time brain network topology analysis.*
+

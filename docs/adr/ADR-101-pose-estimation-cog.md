@@ -164,7 +164,7 @@ This confirms the pipeline trains end-to-end and produces a signal-bearing model
 
 ## Migration / rollout
 
-1. Land this ADR + ADR-100 on `main` of RuView.
+1. Land this ADR + ADR-100 on `main` of radiofrequencia.
 2. Land companion ADR-225 + crate on `main` of v0-appliance.
 3. First release `cog-pose-estimation@0.0.1` ships **only** to `ruvultra` and `cognitum-v0`. Not pushed to the cluster Pis yet.
 4. After P7→P9 data work (#645) brings PCK above a usable threshold, rebuild + re-publish; only then enable cluster rollout via `cognitum-cog-gateway`'s OTA channel.
@@ -196,7 +196,7 @@ PRs `#642` (scaffold + arm release + ONNX + live install) and `#643` (x86_64 rel
 Open follow-ups carried forward from this ADR's "Acceptance gates" section:
 
 - **Hailo HEF cross-compile** — `pose_v1.onnx` is ready; still gated on Hailo Dataflow Compiler + self-hosted runner provisioning. Tracked separately.
-- **PCK@20 ≥ 35%** — explicitly not an acceptance gate of this ADR, but the limiting factor on practical usefulness. Tracked in [#645](https://github.com/ruvnet/RuView/issues/645): needs ~30× more paired samples + multi-room camera framing. Today's seated-desk session is the demonstrated bottleneck.
+- **PCK@20 ≥ 35%** — explicitly not an acceptance gate of this ADR, but the limiting factor on practical usefulness. Tracked in [#645](https://github.com/denilsude/rediofrequencia/issues/645): needs ~30× more paired samples + multi-room camera framing. Today's seated-desk session is the demonstrated bottleneck.
 
 ## See also
 
@@ -206,3 +206,4 @@ Open follow-ups carried forward from this ADR's "Acceptance gates" section:
 - v0-appliance ADR-220: cog management surface (where this cog appears in the dashboard).
 - Issue #645: PCK gap (current 3% / 18.5% → ≥35% target).
 - `docs/benchmarks/pose-estimation-cog.md`: full benchmark log, all measured numbers.
+

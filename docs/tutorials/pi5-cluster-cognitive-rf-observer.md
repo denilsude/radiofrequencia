@@ -432,13 +432,13 @@ the natural directions are:
 2. **Active sensing** — instead of passively observing whatever beacon is
    present, drive your own (e.g., dedicated 5 GHz beacon AP at fixed
    power). Eliminates upstream variability.
-3. **Vital signs** — the RuView project has companion code for extracting
+3. **Vital signs** — the radiofrequencia project has companion code for extracting
    heart-rate and breathing from CSI; the 128-d encoder output is a
    reasonable input feature.
 4. **Federated training** — multiple physical sites publishing to a shared
    brain. Each site keeps its own clusters; transitions are the shared
    vocabulary.
-5. **Push to upstream RuView** — if your cluster develops capabilities not
+5. **Push to upstream radiofrequencia** — if your cluster develops capabilities not
    in this tutorial (you'll know by the time you've written the README),
    send a PR.
 
@@ -464,3 +464,4 @@ of development with 446k+ fingerprints observed, 16 stable RF states, and
 a 2nd-order Markov model operating at 31% of its 39.4% theoretical
 top-1 ceiling. SOTA is a moving target — but this is a real, working
 cognitive RF observer that you can reproduce.*
+

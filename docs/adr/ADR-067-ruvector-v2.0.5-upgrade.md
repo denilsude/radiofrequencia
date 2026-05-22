@@ -7,11 +7,11 @@
 
 ## Context
 
-RuView currently pins all five core RuVector crates at **v2.0.4** (from crates.io) plus a vendored `ruvector-crv` v0.1.1 and optional `ruvector-gnn` v2.0.5. The upstream RuVector workspace has moved to **v2.0.5** with meaningful improvements to the crates we depend on, and has introduced new crates that could benefit RuView's detection pipeline.
+radiofrequencia currently pins all five core RuVector crates at **v2.0.4** (from crates.io) plus a vendored `ruvector-crv` v0.1.1 and optional `ruvector-gnn` v2.0.5. The upstream RuVector workspace has moved to **v2.0.5** with meaningful improvements to the crates we depend on, and has introduced new crates that could benefit radiofrequencia's detection pipeline.
 
 ### Current Integration Map
 
-| RuView Module | RuVector Crate | Current Version | Purpose |
+| radiofrequencia Module | RuVector Crate | Current Version | Purpose |
 |---------------|----------------|-----------------|---------|
 | `signal/subcarrier.rs` | ruvector-mincut | 2.0.4 | Graph min-cut subcarrier partitioning |
 | `signal/spectrogram.rs` | ruvector-attn-mincut | 2.0.4 | Attention-gated spectrogram denoising |
@@ -149,3 +149,4 @@ The `vendor/ruvector` git submodule has been updated from commit `f8f2c60` (v2.0
 - SONA docs: `vendor/ruvector/crates/sona/src/lib.rs`
 - ruvector-coherence spectral: `vendor/ruvector/crates/ruvector-coherence/src/spectral.rs`
 - ruvector-core embeddings: `vendor/ruvector/crates/ruvector-core/src/embeddings.rs`
+

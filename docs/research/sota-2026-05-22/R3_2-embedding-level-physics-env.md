@@ -48,7 +48,7 @@ The per-subject signal in R3.2's setup is **much weaker** than R3 tick 12's. The
 ### What R3.2 DOES NOT demonstrate
 
 1. **80%+ cross-room accuracy.** Needs real AETHER (contrastive learning head), not mean-pooling.
-2. **That production RuView re-ID would work.** Real AETHER would have stronger per-subject signature; the corrected architecture would then close the gap.
+2. **That production radiofrequencia re-ID would work.** Real AETHER would have stronger per-subject signature; the corrected architecture would then close the gap.
 3. **Numerical predictions for production deployments.** This is a structural validation, not a production benchmark.
 
 ## Three "honest scope" findings now in the loop
@@ -119,3 +119,4 @@ The arc has produced:
 - **R12 PABS**: operates within-room; cross-room transfer needs R3.2 architecture
 - **R14 / R15**: privacy framework holds; corrected architecture stays on-device per ADR-106
 - **ADR-105 / ADR-106 / ADR-107**: federation can ship the corrected architecture's outputs without violating any privacy constraint
+

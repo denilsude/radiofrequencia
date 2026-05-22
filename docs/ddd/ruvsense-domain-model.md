@@ -1,6 +1,6 @@
 # RuvSense Domain Model
 
-RuvSense is the multistatic WiFi sensing subsystem of RuView. It turns raw radio signals from multiple ESP32 sensors into tracked human poses, vital signs, and spatial awareness — all without cameras.
+RuvSense is the multistatic WiFi sensing subsystem of radiofrequencia. It turns raw radio signals from multiple ESP32 sensors into tracked human poses, vital signs, and spatial awareness — all without cameras.
 
 This document defines the system using [Domain-Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html) (DDD): bounded contexts that own their data and rules, aggregate roots that enforce invariants, value objects that carry meaning, and domain events that connect everything. The goal is to make the system's structure match the physics it models — so that anyone reading the code (or an AI agent modifying it) understands *why* each piece exists, not just *what* it does.
 
@@ -1198,3 +1198,4 @@ pub enum EdgeEvent {
 - Edge Intelligence → Multistatic Sensing: **Alternative** (edge runs on-device; multistatic runs on aggregator — same physics, different compute location)
 - Edge Intelligence → Pose Tracking: **Upstream** (edge provides presence/vitals; aggregator can skip detection if edge already confirmed occupancy)
 - Edge Intelligence → Coherence: **Simplified** (edge uses simple variance thresholds instead of full coherence gating)
+

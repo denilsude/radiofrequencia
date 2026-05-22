@@ -38,7 +38,7 @@ Additive on prior ADRs:
 | ADR-105 (federation) | 500 |
 | ADR-106 (DP-SGD + isolation) | +300 |
 | **ADR-107 (cross-installation)** | **+530** |
-| **Total `ruview-fed` budget** | **~1,330 LOC, ~6 weeks** |
+| **Total `radiofrequencia-fed` budget** | **~1,330 LOC, ~6 weeks** |
 
 ## Why this closes the chain
 
@@ -93,3 +93,4 @@ Quantum-resistant DH = out-of-scope future ADR-108; Kyber substitution is mechan
 - 3 ADRs (105, 106, 107) closing the privacy + federation chain
 - 3 kinds of negative result (physics-floor, architecture-error, revisited-to-positive)
 - 7 deferred follow-ups closed
+

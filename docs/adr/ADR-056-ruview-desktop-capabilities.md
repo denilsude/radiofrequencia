@@ -1,13 +1,13 @@
-# ADR-056: RuView Desktop Complete Capabilities Reference
+# ADR-056: radiofrequencia Desktop Complete Capabilities Reference
 
 ## Status
 Accepted
 
 ## Context
-RuView Desktop is a comprehensive WiFi-based sensing platform that combines hardware management, real-time signal processing, neural network inference, and intelligent monitoring. This ADR documents all integrated capabilities across the desktop application and underlying crates.
+radiofrequencia Desktop is a comprehensive WiFi-based sensing platform that combines hardware management, real-time signal processing, neural network inference, and intelligent monitoring. This ADR documents all integrated capabilities across the desktop application and underlying crates.
 
 ## Decision
-The RuView Desktop application consolidates all WiFi-DensePose functionality into a single, unified interface with the following capabilities.
+The radiofrequencia Desktop application consolidates all WiFi-DensePose functionality into a single, unified interface with the following capabilities.
 
 ---
 
@@ -249,3 +249,4 @@ The RuView Desktop application consolidates all WiFi-DensePose functionality int
 - ADR-055: Integrated Sensing Server
 - ADR-023: 8-Phase Training Pipeline
 - ADR-016: RuVector Integration
+

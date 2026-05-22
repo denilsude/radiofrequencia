@@ -61,7 +61,7 @@ jobs:
             echo "Initializing $RVF with metadata segment"
             jq -n --arg repo "$REPO" --arg ts "$FETCHED_AT" '{
               type: "metadata",
-              name: "ruview-clone-traffic-history",
+              name: "radiofrequencia-clone-traffic-history",
               version: "1.0.0",
               schema: "ruvector.rvf.jsonl/v1",
               format: "github-traffic-snapshots",
@@ -147,3 +147,4 @@ jobs:
           git add data/clone-data.rvf
           git commit -m "chore(traffic): clone snapshot — ${{ steps.agg.outputs.clone_days }} days observed → ${{ steps.agg.outputs.clones }} clones, ${{ steps.agg.outputs.view_days }} view-days → ${{ steps.agg.outputs.views }} views"
           git push
+

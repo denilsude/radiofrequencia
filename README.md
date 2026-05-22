@@ -1,8 +1,8 @@
-# π RuView
+# radiofrequencia
 
 <p align="center">
-  <a href="https://cognitum.one/seed">
-    <img src="assets/ruview-seed.png" alt="RuView - WiFi DensePose" width="100%">
+  <a href="#">
+    <img src="assets/logo-radiofrequencia.svg" alt="radiofrequencia" width="100%">
   </a>
 </p>
 <p align="center">
@@ -16,15 +16,15 @@
 > - Single ESP32 deployments have limited spatial resolution — use 2+ nodes or add a [Cognitum Seed](https://cognitum.one) for best results
 > - Camera-free pose accuracy is limited (PCK@20 ≈ 2.5% with proxy labels) — [camera ground-truth training](docs/adr/ADR-079-camera-ground-truth-training.md) targets **35%+ PCK@20**; the pipeline is implemented, but the data-collection and evaluation phases (ADR-079 P7–P9) are still pending, so no measured camera-supervised PCK@20 has been published yet
 >
-> Contributions and bug reports welcome at [Issues](https://github.com/ruvnet/RuView/issues).
+> Contributions and bug reports welcome at [Issues](https://github.com/denilsude/rediofrequencia/issues).
 
 ## **See through walls with WiFi** ##
 
 **Turn ordinary WiFi into a spatial intelligence / sensing system.** Detect people, measure breathing and heart rate, track movement, and monitor rooms — through walls, in the dark, with no cameras or wearables. Just physics.
 
-### π RuView is a WiFi sensing platform that turns radio signals into spatial intelligence.
+### radiofrequencia is a WiFi sensing platform that turns radio signals into spatial intelligence.
 
-Every WiFi router already fills your space with radio waves. When people move, breathe, or even sit still, they disturb those waves in measurable ways. RuView captures these disturbances using Channel State Information (CSI) from low-cost ESP32 sensors and turns them into actionable data: who's there, what they're doing, and whether they're okay.
+Every WiFi router already fills your space with radio waves. When people move, breathe, or even sit still, they disturb those waves in measurable ways. radiofrequencia captures these disturbances using Channel State Information (CSI) from low-cost ESP32 sensors and turns them into actionable data: who's there, what they're doing, and whether they're okay.
 
 **What it senses:**
 - **Presence and occupancy** — detect people through walls, count them, track entries and exits
@@ -33,11 +33,11 @@ Every WiFi router already fills your space with radio waves. When people move, b
 - **Environment mapping** — RF fingerprinting identifies rooms, detects moved furniture, spots new objects
 - **Sleep quality** — overnight monitoring with sleep stage classification and apnea screening
 
-Built on [RuVector](https://github.com/ruvnet/ruvector/) and [Cognitum Seed](https://cognitum.one), RuView runs entirely on edge hardware — an ESP32 mesh (as low as $9 per node) paired with a Cognitum Seed for persistent memory, cryptographic attestation, and AI integration. No cloud, no cameras, no internet required.
+Built on [RuVector](https://github.com/ruvnet/ruvector/) and [Cognitum Seed](https://cognitum.one), radiofrequencia runs entirely on edge hardware — an ESP32 mesh (as low as $9 per node) paired with a Cognitum Seed for persistent memory, cryptographic attestation, and AI integration. No cloud, no cameras, no internet required.
 
 The system learns each environment locally using spiking neural networks that adapt in under 30 seconds, with multi-frequency mesh scanning across 6 WiFi channels that uses your neighbors' routers as free radar illuminators. Every measurement is cryptographically attested via an Ed25519 witness chain.
 
-RuView turns ordinary WiFi into a contactless sensor. A $9 ESP32 board reads the radio reflections off the people in a room, and a small pretrained model — published on Hugging Face at [`ruvnet/wifi-densepose-pretrained`](https://huggingface.co/ruvnet/wifi-densepose-pretrained) — tells you who's there, how they're breathing, and how their heart rate is trending. The model fits in 8 KB (4-bit quantized), runs in microseconds on a Raspberry Pi, and reports 100% presence accuracy on the validation set. No cameras, no wearables, no app on the user's phone.
+radiofrequencia turns ordinary WiFi into a contactless sensor. A $9 ESP32 board reads the radio reflections off the people in a room, and a small pretrained model — published on Hugging Face at [`ruvnet/wifi-densepose-pretrained`](https://huggingface.co/ruvnet/wifi-densepose-pretrained) — tells you who's there, how they're breathing, and how their heart rate is trending. The model fits in 8 KB (4-bit quantized), runs in microseconds on a Raspberry Pi, and reports 100% presence accuracy on the validation set. No cameras, no wearables, no app on the user's phone.
 
 ### Built for low-power edge applications
 
@@ -45,7 +45,7 @@ RuView turns ordinary WiFi into a contactless sensor. A $9 ESP32 board reads the
 
 [![Rust 1.85+](https://img.shields.io/badge/rust-1.85+-orange.svg)](https://www.rust-lang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Tests: 1463](https://img.shields.io/badge/tests-1463%20passed-brightgreen.svg)](https://github.com/ruvnet/RuView)
+[![Tests: 1463](https://img.shields.io/badge/tests-1463%20passed-brightgreen.svg)](https://github.com/denilsude/rediofrequencia)
 [![Docker: multi-arch](https://img.shields.io/badge/docker-amd64%20%2B%20arm64-blue.svg)](https://hub.docker.com/r/ruvnet/wifi-densepose)
 [![Vital Signs](https://img.shields.io/badge/vital%20signs-breathing%20%2B%20heartbeat-red.svg)](#vital-sign-detection)
 [![ESP32 Ready](https://img.shields.io/badge/ESP32--S3-CSI%20streaming-purple.svg)](#esp32-s3-hardware-pipeline)
@@ -55,14 +55,14 @@ RuView turns ordinary WiFi into a contactless sensor. A $9 ESP32 board reads the
  
 > | What | How | Speed / scale |
 > |------|-----|---------------|
-> | 🫁 **Breathing rate** | Bandpass 0.1–0.5 Hz on wrapped phase, circular variance, zero-crossing BPM ([#593](https://github.com/ruvnet/RuView/issues/593)) | 6–30 BPM, real-time |
+> | 🫁 **Breathing rate** | Bandpass 0.1–0.5 Hz on wrapped phase, circular variance, zero-crossing BPM ([#593](https://github.com/denilsude/rediofrequencia/issues/593)) | 6–30 BPM, real-time |
 > | 💓 **Heart rate** | Bandpass 0.8–2.0 Hz, zero-crossing BPM | 40–120 BPM, real-time |
 > | 👤 **Presence detection** | Trained head on Hugging Face ([`ruvnet/wifi-densepose-pretrained`](https://huggingface.co/ruvnet/wifi-densepose-pretrained), 100% validation accuracy) + a phase-variance fallback that needs no model | < 1 ms, ~30 s ambient calibration |
 > | 🧬 **CSI embeddings** | 128-dim contrastive encoder shipped on Hugging Face, 4-bit quantised variant fits in 8 KB | **164,183 emb/s** on M4 Pro |
 > | 🦴 **17-keypoint pose estimation** | `cog-pose-estimation` Cog v0.0.1 — signed aarch64 + x86_64 binaries on GCS, loads `pose_v1.safetensors` via Candle. Train your own from paired data in 2.1 s on an RTX 5080 ([ADR-101](docs/adr/ADR-101-pose-estimation-cog.md), [benchmarks](docs/benchmarks/pose-estimation-cog.md)) | 8.4 ms cold-start on a Pi 5 |
 > | 🚶 **Motion / activity** | Motion-band power + phase acceleration | Real-time |
-> | 🤸 **Fall detection** | Phase-acceleration threshold + 3-frame debounce + 5 s cooldown ([#263](https://github.com/ruvnet/RuView/issues/263)) | < 200 ms |
-> | 🧮 **Multi-person count** | Adaptive P95 normalisation + runtime-tunable dedup factor (`/api/v1/config/dedup-factor`, [#491](https://github.com/ruvnet/RuView/pull/491)). Six specialised learned counters available as Cogs: `occupancy-zones`, `elevator-count`, `queue-length`, `customer-flow`, `clean-room`, `person-matching` | Real-time, self-calibrating |
+> | 🤸 **Fall detection** | Phase-acceleration threshold + 3-frame debounce + 5 s cooldown ([#263](https://github.com/denilsude/rediofrequencia/issues/263)) | < 200 ms |
+> | 🧮 **Multi-person count** | Adaptive P95 normalisation + runtime-tunable dedup factor (`/api/v1/config/dedup-factor`, [#491](https://github.com/denilsude/rediofrequencia/pull/491)). Six specialised learned counters available as Cogs: `occupancy-zones`, `elevator-count`, `queue-length`, `customer-flow`, `clean-room`, `person-matching` | Real-time, self-calibrating |
 > | 🧱 **Through-wall sensing** | Fresnel-zone geometry + multipath modeling | Up to ~5 m, signal-dependent |
 > | 🧠 **Edge intelligence** | **105-cog catalog** ([ADR-102](docs/adr/ADR-102-edge-module-registry.md)) live from `app-registry.json` — health, security, building, retail, industrial, research, AI, swarm, signal, network, and developer modules. Optional Cognitum Seed adds persistent vector store + kNN + witness chain | $140 total BOM |
 > | 🎯 **Camera-free pre-training** | Self-supervised contrastive encoder, 12.2M training steps on 60K frames, shipped on Hugging Face | 84 s/epoch retrain on M4 Pro |
@@ -105,32 +105,32 @@ node scripts/mincut-person-counter.js --port 5006  # Correct person counting
 > | **ESP32 + Cognitum Seed** (recommended) | ESP32-S3 + [Cognitum Seed](https://cognitum.one) | ~$140 | Yes | Presence, motion, breathing, heart rate, fall detection, multi-person counting, 17-keypoint pose (signed Cog binary), 105-cog catalog, persistent vector store, kNN search, witness chain, MCP proxy |
 > | **ESP32 Mesh** | 3-6x ESP32-S3 + WiFi router | ~$54 | Yes | Same capabilities as above without the persistent-memory features |
 > | **Research NIC** | Intel 5300 / Atheros AR9580 | ~$50-100 | Yes | Full CSI with 3x3 MIMO |
-> | **Any WiFi** | Windows, macOS, or Linux laptop | $0 | No | RSSI-only: coarse presence and motion (see [tutorial #36](https://github.com/ruvnet/RuView/issues/36)) |
+> | **Any WiFi** | Windows, macOS, or Linux laptop | $0 | No | RSSI-only: coarse presence and motion (see [tutorial #36](https://github.com/denilsude/rediofrequencia/issues/36)) |
 >
 > No hardware? Verify the signal processing pipeline with the deterministic reference signal: `python archive/v1/data/proof/verify.py`
 >
 ---
 
 
-  <a href="https://ruvnet.github.io/RuView/">
+  <a href="https://ruvnet.github.io/rediofrequencia/">
     <img src="assets/v2-screen.png" alt="WiFi DensePose — Live pose detection with setup guide" width="800">
   </a>
   <br>
   <em>Real-time pose skeleton from WiFi CSI signals — no cameras, no wearables</em>
   <br><br>
-  <a href="https://ruvnet.github.io/RuView/"><strong>▶ Live Observatory Demo</strong></a>
+  <a href="https://ruvnet.github.io/rediofrequencia/"><strong>▶ Live Observatory Demo</strong></a>
   &nbsp;|&nbsp;
-  <a href="https://ruvnet.github.io/RuView/pose-fusion.html"><strong>▶ Dual-Modal Pose Fusion Demo</strong></a>
+  <a href="https://ruvnet.github.io/rediofrequencia/pose-fusion.html"><strong>▶ Dual-Modal Pose Fusion Demo</strong></a>
   &nbsp;|&nbsp;
-  <a href="https://ruvnet.github.io/RuView/pointcloud/"><strong>▶ Live 3D Point Cloud</strong></a>
+  <a href="https://ruvnet.github.io/rediofrequencia/pointcloud/"><strong>▶ Live 3D Point Cloud</strong></a>
   &nbsp;|&nbsp;
-  <a href="https://ruvnet.github.io/RuView/three.js/"><strong>▶ three.js Demos (5)</strong></a>
+  <a href="https://ruvnet.github.io/rediofrequencia/three.js/"><strong>▶ three.js Demos (5)</strong></a>
 
 > The [server](#-quick-start) is optional for visualization and aggregation — the ESP32 [runs independently](#esp32-s3-hardware-pipeline) for presence detection, vital signs, and fall alerts.
 >
-> **Live ESP32 pipeline**: Connect an ESP32-S3 node → run the [sensing server](#sensing-server) → open the [pose fusion demo](https://ruvnet.github.io/RuView/pose-fusion.html) for real-time dual-modal pose estimation (webcam + WiFi CSI). See [ADR-059](docs/adr/ADR-059-live-esp32-csi-pipeline.md).
+> **Live ESP32 pipeline**: Connect an ESP32-S3 node → run the [sensing server](#sensing-server) → open the [pose fusion demo](https://ruvnet.github.io/rediofrequencia/pose-fusion.html) for real-time dual-modal pose estimation (webcam + WiFi CSI). See [ADR-059](docs/adr/ADR-059-live-esp32-csi-pipeline.md).
 >
-> **three.js scene gallery** at [`/three.js/`](https://ruvnet.github.io/RuView/three.js/) — five progressively richer ADR-097 demos: helpers, cinematic, GLTF skinned, FBX skinned, and a live MediaPipe→Mixamo retargeting feed driven by ESP32 CSI. Demos 04 and 05 require a local Mixamo `X Bot.fbx` (license boundary — not redistributed).
+> **three.js scene gallery** at [`/three.js/`](https://ruvnet.github.io/rediofrequencia/three.js/) — five progressively richer ADR-097 demos: helpers, cinematic, GLTF skinned, FBX skinned, and a live MediaPipe→Mixamo retargeting feed driven by ESP32 CSI. Demos 04 and 05 require a local Mixamo `X Bot.fbx` (license boundary — not redistributed).
 
 
 ## 🤗 Pretrained model on Hugging Face
@@ -155,7 +155,7 @@ huggingface-cli download ruvnet/wifi-densepose-pretrained --local-dir models/wif
 
 **Quantization choices** (all in the HF repo): `model-q2.bin` (4 KB) · `model-q4.bin` ⭐ recommended (8 KB) · `model-q8.bin` (16 KB) · `model.safetensors` full (48 KB)
 
-The separate **17-keypoint pose-estimation model** is not in this release — pipeline is implemented but keypoint weights are still pending. Tracked in [#509](https://github.com/ruvnet/RuView/issues/509); see [ADR-079](docs/adr/ADR-079-camera-supervised-pose-finetune.md) phases P7–P9.
+The separate **17-keypoint pose-estimation model** is not in this release — pipeline is implemented but keypoint weights are still pending. Tracked in [#509](https://github.com/denilsude/rediofrequencia/issues/509); see [ADR-079](docs/adr/ADR-079-camera-supervised-pose-finetune.md) phases P7–P9.
 
 
 ## 🧩 Edge Module Catalog
@@ -175,7 +175,7 @@ Each module is a small signed binary (~400 KB) that runs alongside the WiFi-Dens
 | `cardiac-arrhythmia` | Spots irregular heartbeats and abnormal heart rhythms | 8 KB | Hard |
 | `cough-detect` | Acoustic transient + spectral cough detector with 30s cluster aggregation. Early-warning signal for respiratory illness. | 451 KB | Easy |
 | `dream-stage` | Tracks your sleep stages — light, deep, and dreaming | 14 KB | Hard |
-| `fall-detect` | Two-stage impact + stillness fall detector over ambient feature stream (ESP32 motion / mic). Optional ruview-mode for CSI-based pose reinforcement. | 402 KB | Easy |
+| `fall-detect` | Two-stage impact + stillness fall detector over ambient feature stream (ESP32 motion / mic). Optional radiofrequencia-mode for CSI-based pose reinforcement. | 402 KB | Easy |
 | `gait-analysis` | Detects walking problems and scores fall risk | 12 KB | Hard |
 | `health-monitor` | Contactless heart rate, breathing, sleep, and fall alerts | 30 KB | Med |
 | `respiratory-distress` | Alerts when breathing becomes labored or dangerously fast | 10 KB | Hard |
@@ -192,7 +192,7 @@ Each module is a small signed binary (~400 KB) that runs alongside the WiFi-Dens
 | `behavioral-profiler` | Learns normal behavior and flags anything unusual | 12 KB | Hard |
 | `fleet-auth` | Manage device certificates and access across all seeds | 12 KB | Med |
 | `glass-break` | Two-phase bang + shatter acoustic detector. Distinguishes glass break from ordinary impulse noise. | 451 KB | Easy |
-| `gunshot-detect` | Saturating peak + exponential decay acoustic detector with optional ruview CSI motion-drop reinforcement. | 451 KB | Easy |
+| `gunshot-detect` | Saturating peak + exponential decay acoustic detector with optional radiofrequencia CSI motion-drop reinforcement. | 451 KB | Easy |
 | `intrusion` | Alerts when an unauthorized person enters a room | 6 KB | Med |
 | `intrusion-detect-ml` | Detect network attacks using machine learning | 14 KB | Hard |
 | `loitering` | Alerts when someone lingers too long in one spot | 3 KB | Easy |
@@ -216,7 +216,7 @@ Each module is a small signed binary (~400 KB) that runs alongside the WiFi-Dens
 | `meeting-room` | Shows if a meeting room is free or occupied | 5 KB | Easy |
 | `occupancy-zones` | Counts people in each room through walls | 8 KB | Med |
 | `predictive-maintenance` | Vibration harmonic analyzer for rotating equipment. Tracks F1 / 2×F1 / high-order / sideband energy to score degradation severity. | 451 KB | Easy |
-| `smoke-fire` | Multi-signal smoke and fire detector. Fuses acoustic crackle, thermal drift proxy, and optional ruview CSI plume signature. Not a UL-listed replacement for code-required smoke alarms. | 451 KB | Easy |
+| `smoke-fire` | Multi-signal smoke and fire detector. Fuses acoustic crackle, thermal drift proxy, and optional radiofrequencia CSI plume signature. Not a UL-listed replacement for code-required smoke alarms. | 451 KB | Easy |
 | `water-leak` | Persistent low-amplitude hiss + periodic drip acoustic detector with multi-minute persistence gate. Two-stage likely → confirmed. | 451 KB | Easy |
 
 ### 🛍️ Retail &mdash; <sub>7 modules</sub>
@@ -225,8 +225,8 @@ Each module is a small signed binary (~400 KB) that runs alongside the WiFi-Dens
 |----|--------------|-----:|:----------:|
 | `customer-flow` | Counts foot traffic in and out of each entrance | 8 KB | Med |
 | `dwell-heatmap` | Shows where customers spend the most time | 6 KB | Med |
-| `package-detect` | Sustained CSI-shift detector for porch / loading bay package arrivals and departures. Requires ESP32 CSI ruview input. | 451 KB | Easy |
-| `parking-occupancy` | Per-zone parking occupancy via ESP32 CSI subcarrier-amplitude shift. Tracks utilization and churn-per-hour. Requires ruview. | 451 KB | Easy |
+| `package-detect` | Sustained CSI-shift detector for porch / loading bay package arrivals and departures. Requires ESP32 CSI radiofrequencia input. | 451 KB | Easy |
+| `parking-occupancy` | Per-zone parking occupancy via ESP32 CSI subcarrier-amplitude shift. Tracks utilization and churn-per-hour. Requires radiofrequencia. | 451 KB | Easy |
 | `queue-length` | Estimates line length and wait time | 6 KB | Med |
 | `shelf-engagement` | Detects when customers interact with products | 6 KB | Med |
 | `table-turnover` | Tracks which restaurant tables are free or occupied | 4 KB | Easy |
@@ -239,7 +239,7 @@ Each module is a small signed binary (~400 KB) that runs alongside the WiFi-Dens
 | `confined-space` | Monitors workers in tight spaces for safety | 5 KB | Med |
 | `forklift-proximity` | Warns if a forklift gets too close to workers | 10 KB | Hard |
 | `livestock-monitor` | Monitors animals for distress, escape, or illness | 6 KB | Med |
-| `ppe-compliance` | Cog-composition layer: alerts when ruview-densepose detects presence in a restricted zone without an accompanying PPE-camera-cog confirmation vector. | 387 KB | Easy |
+| `ppe-compliance` | Cog-composition layer: alerts when radiofrequencia-densepose detects presence in a restricted zone without an accompanying PPE-camera-cog confirmation vector. | 387 KB | Easy |
 | `slip-fall-zone` | Pre-fall risk detector. Fires when motion-variance drop, splash audio, and optional cautious-gait CSI all signal elevated slip risk. | 451 KB | Easy |
 | `structural-vibration` | Detects dangerous vibrations in buildings or machines | 8 KB | Hard |
 
@@ -256,7 +256,7 @@ Each module is a small signed binary (~400 KB) that runs alongside the WiFi-Dens
 | `music-conductor` | Reads a conductor's gestures for tempo and dynamics | 12 KB | Hard |
 | `plant-growth` | Tracks plant growth rate and day/night cycles | 8 KB | Med |
 | `rain-detect` | Detects when rain starts, stops, and how heavy it is | 6 KB | Med |
-| `ruview-densepose` | Full body pose tracking from WiFi — no cameras needed | 50 KB | Hard |
+| `radiofrequencia-densepose` | Full body pose tracking from WiFi — no cameras needed | 50 KB | Hard |
 | `sound-classifier` | Identify sounds like glass break, alarm, or baby cry | 16 KB | Hard |
 | `time-crystal` | Experiments with repeating time-pattern symmetry | 12 KB | Hard |
 
@@ -530,29 +530,29 @@ See [`docs/adr/ADR-024-contrastive-csi-embedding-model.md`](docs/adr/ADR-024-con
 
 ## 🧩 Claude Code & Codex Plugin
 
-RuView ships a [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin (and Codex prompt mirror) that wraps the whole workflow — onboarding, ESP32 setup, configuration, sensing apps, model training, advanced multistatic sensing, CLI/API/WASM, mmWave radar, and witness verification — as 9 skills, 7 `/ruview-*` commands, and 3 agents. It lives in [`plugins/ruview/`](plugins/ruview/README.md); the marketplace manifest is [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) at the repo root.
+radiofrequencia ships a [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin (and Codex prompt mirror) that wraps the whole workflow — onboarding, ESP32 setup, configuration, sensing apps, model training, advanced multistatic sensing, CLI/API/WASM, mmWave radar, and witness verification — as 9 skills, 7 `/radiofrequencia-*` commands, and 3 agents. It lives in [`plugins/radiofrequencia/`](plugins/radiofrequencia/README.md); the marketplace manifest is [`.claude-plugin/marketplace.json`](.claude-plugin/marketplace.json) at the repo root.
 
 ```bash
 # In Claude Code — add this repo as a plugin marketplace, then install:
-/plugin marketplace add ruvnet/RuView
-/plugin install ruview@ruview
+/plugin marketplace add denilsude/rediofrequencia
+/plugin install radiofrequencia@radiofrequencia
 
 # Or try it for one session without installing (from a local clone of the repo):
-claude --plugin-dir ./plugins/ruview
+claude --plugin-dir ./plugins/radiofrequencia
 
 # Then, in Claude Code:
-#   /ruview-start      → onboarding (Docker demo / repo build / live ESP32)
-#   /ruview-flash      → build + flash ESP32 firmware
-#   /ruview-provision  → provision WiFi creds, sink IP, channel/MAC, mesh slots
-#   /ruview-app        → run a sensing application (presence / vitals / pose / sleep / MAT / point cloud)
-#   /ruview-train      → train / evaluate / publish a model (incl. GPU on GCloud)
-#   /ruview-advanced   → multistatic / tomography / cross-viewpoint / mesh-security
-#   /ruview-verify     → tests + deterministic proof + witness bundle
+#   /radiofrequencia-start      → onboarding (Docker demo / repo build / live ESP32)
+#   /radiofrequencia-flash      → build + flash ESP32 firmware
+#   /radiofrequencia-provision  → provision WiFi creds, sink IP, channel/MAC, mesh slots
+#   /radiofrequencia-app        → run a sensing application (presence / vitals / pose / sleep / MAT / point cloud)
+#   /radiofrequencia-train      → train / evaluate / publish a model (incl. GPU on GCloud)
+#   /radiofrequencia-advanced   → multistatic / tomography / cross-viewpoint / mesh-security
+#   /radiofrequencia-verify     → tests + deterministic proof + witness bundle
 ```
 
-**Codex (OpenAI CLI):** `cp plugins/ruview/codex/prompts/*.md ~/.codex/prompts/` — the seven `/ruview-*` commands are mirrored as Codex prompts; [`plugins/ruview/codex/AGENTS.md`](plugins/ruview/codex/AGENTS.md) carries the project rules. See [`plugins/ruview/codex/README.md`](plugins/ruview/codex/README.md).
+**Codex (OpenAI CLI):** `cp plugins/radiofrequencia/codex/prompts/*.md ~/.codex/prompts/` — the seven `/radiofrequencia-*` commands are mirrored as Codex prompts; [`plugins/radiofrequencia/codex/AGENTS.md`](plugins/radiofrequencia/codex/AGENTS.md) carries the project rules. See [`plugins/radiofrequencia/codex/README.md`](plugins/radiofrequencia/codex/README.md).
 
-Verify the plugin structure: `bash plugins/ruview/scripts/smoke.sh`. Full details: [`plugins/ruview/README.md`](plugins/ruview/README.md).
+Verify the plugin structure: `bash plugins/radiofrequencia/scripts/smoke.sh`. Full details: [`plugins/radiofrequencia/README.md`](plugins/radiofrequencia/README.md).
 
 ---
 
@@ -562,7 +562,7 @@ Verify the plugin structure: `bash plugins/ruview/scripts/smoke.sh`. Full detail
 |----------|-------------|
 | [User Guide](docs/user-guide.md) | Step-by-step guide: installation, first run, API usage, hardware setup, training |
 | [Build Guide](docs/build-guide.md) | Building from source (Rust and Python) |
-| [Claude Code / Codex Plugin](plugins/ruview/README.md) | The `ruview` plugin + marketplace — skills, `/ruview-*` commands, agents, and the Codex prompt mirror |
+| [Claude Code / Codex Plugin](plugins/radiofrequencia/README.md) | The `radiofrequencia` plugin + marketplace — skills, `/radiofrequencia-*` commands, agents, and the Codex prompt mirror |
 | [Architecture Decisions](docs/adr/README.md) | 96 ADRs — why each technical choice was made, organized by domain (hardware, signal processing, ML, platform, infrastructure) |
 | [Domain Models](docs/ddd/README.md) | 8 DDD models (RuvSense, Signal Processing, Training Pipeline, Hardware Platform, Sensing Server, WiFi-Mat, CHCI, rvCSI) — bounded contexts, aggregates, domain events, and ubiquitous language |
 | [rvCSI — edge RF sensing runtime](https://github.com/ruvnet/rvcsi) | Rust-first / TypeScript-accessible / hardware-abstracted CSI runtime: multi-source ingestion (incl. real nexmon_csi `.pcap` from a **Raspberry Pi 5** / Pi 4 / Pi 3B+ — CYW43455 / BCM43455c0) → validation → DSP → typed events → RuVector RF memory ([ADR-095](docs/adr/ADR-095-rvcsi-edge-rf-sensing-platform.md), [ADR-096](docs/adr/ADR-096-rvcsi-ffi-crate-layout.md), [domain model](docs/ddd/rvcsi-domain-model.md)). Now its own repo — [`ruvnet/rvcsi`](https://github.com/ruvnet/rvcsi) — vendored here under `vendor/rvcsi`; 9 `rvcsi-*` crates on crates.io, `@ruv/rvcsi` on npm, plus a Claude Code plugin. |
@@ -578,8 +578,9 @@ MIT License — see [LICENSE](LICENSE) for details.
 
 ## 📞 Support
 
-[GitHub Issues](https://github.com/ruvnet/RuView/issues) | [Discussions](https://github.com/ruvnet/RuView/discussions) | [PyPI](https://pypi.org/project/wifi-densepose/)
+[GitHub Issues](https://github.com/denilsude/rediofrequencia/issues) | [Discussions](https://github.com/denilsude/rediofrequencia/discussions) | [PyPI](https://pypi.org/project/wifi-densepose/)
 
 ---
 
 **WiFi DensePose** — Privacy-preserving human pose estimation through WiFi signals.
+

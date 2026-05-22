@@ -58,7 +58,7 @@ the 5-layer kernel. Everything new lives at the cluster boundary.
 
 ## Decision
 
-Adopt **a per-cluster Pi hop** as the canonical RuView mid-scale
+Adopt **a per-cluster Pi hop** as the canonical radiofrequencia mid-scale
 deployment shape. A "cluster" is **3–6 ESP32-S3 sensor nodes within
 WiFi mesh range of one Pi**.
 
@@ -243,3 +243,4 @@ recommended fleet-shape.
   Thread (decision-tree.md L5), the cluster Pi may need a Thread
   Border Router role. This ADR doesn't pre-commit; it's compatible
   with both ESP-WIFI-MESH and Thread futures.
+

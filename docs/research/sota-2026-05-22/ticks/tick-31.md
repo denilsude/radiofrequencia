@@ -39,7 +39,7 @@ wifi-densepose plan-antennas
 ```
 
 ```
-ruview_placement_recommend(room, targets, cog) -> {anchors, coverage, rationale}
+radiofrequencia_placement_recommend(room, targets, cog) -> {anchors, coverage, rationale}
 ```
 
 ~360 LOC total for placement-strategy productisation.
@@ -112,3 +112,4 @@ After 31 ticks, the loop has produced everything addressable in the cron-driven 
 1. Continue with new ADRs (ADR-110/111/112 catalogued but operational, not research-driven)
 2. Cross-thread integration experiments
 3. Eventually write the 00-summary.md after 12:00 UTC stop
+

@@ -51,8 +51,9 @@ The R5 saliency map already told us: the count-task signal is band-spread, no si
 - 3-class extension (0 / 1 / 2+ people) — measure the information-rate cliff.
 - Run the model on a non-ESP32 RSSI source (e.g. `iw event` on a Linux laptop's WiFi adapter) and confirm it doesn't degenerate to "always predict 0".
 - Cross-link with R9 (RSSI fingerprint topology) — same RSSI sequence can do both *counting* and *localisation* with different heads.
-- Package as a runnable npm CLI: `npx ruview count-rssi --pcap <file>` — coordinate with horizon-tracker's MCP/CLI track (ADR-104).
+- Package as a runnable npm CLI: `npx radiofrequencia count-rssi --pcap <file>` — coordinate with horizon-tracker's MCP/CLI track (ADR-104).
 
 ## Connection back to PROGRESS.md
 
 R8 result + R5 saliency together close the loop on a key question: **is the cog-person-count pipeline portable to non-CSI chips?** Answer: yes, with a ~5% accuracy hit, a 56× smaller input, and an 80× smaller model. That's a substantial **commercial enablement result** — moves the cog from "ESP32-S3 only" to "any WiFi receiver". Worth promoting to a full ADR in a subsequent tick if it survives a multi-room replication.
+

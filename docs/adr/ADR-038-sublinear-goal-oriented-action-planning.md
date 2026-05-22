@@ -80,7 +80,7 @@ The world state is a flat map of typed properties representing the current proje
 | `multi_person_neural` | Neural multi-person model | ADR-037 Phase 4 |
 | `wasm_deployment` | WebAssembly build functional | ADR-025 |
 | `mat_survivor_detection` | MAT disaster detection operational | ADR-011/ADR-026 |
-| `ruview_sensing_ui` | Sensing-first RF UI mode | ADR-031 |
+| `radiofrequencia_sensing_ui` | Sensing-first RF UI mode | ADR-031 |
 | `mesh_security_hardened` | Multistatic mesh security layer | ADR-032 |
 
 #### 2.1.2 Hardware Availability Flags (Boolean)
@@ -168,7 +168,7 @@ pub enum Effect {
 | `adr027_meridian` | 027 | 10 | `aether_embeddings`, `gpu_available` | `meridian_generalization = true` | GPU |
 | `adr025_wasm` | 025 | 5 | `sota_signal_processing` | `wasm_deployment = true` | None |
 | `adr011_mat` | 011 | 8 | `vital_signs_extraction`, `person_count_estimation` | `mat_survivor_detection = true` | None |
-| `adr031_ruview` | 031 | 4 | `persistent_field_model`, `coherence_gating` | `ruview_sensing_ui = true` | None |
+| `adr031_radiofrequencia` | 031 | 4 | `persistent_field_model`, `coherence_gating` | `radiofrequencia_sensing_ui = true` | None |
 | `adr032_mesh_security` | 032 | 5 | `multistatic_mesh` | `mesh_security_hardened = true` | None |
 
 ### 2.3 Goal Specification
@@ -544,3 +544,4 @@ npx @claude-flow/cli@latest goap graph --format dot > goap.dot
 3. Page, L., Brin, S., Motwani, R., Winograd, T. (1999). "The PageRank Citation Ranking: Bringing Order to the Web." Stanford InfoLab.
 4. Ghallab, M., Nau, D., Traverso, P. (2004). "Automated Planning: Theory and Practice." Morgan Kaufmann.
 5. Russell, S., Norvig, P. (2020). "Artificial Intelligence: A Modern Approach." 4th ed., Chapter 11: Automated Planning.
+

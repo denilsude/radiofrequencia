@@ -119,12 +119,12 @@ The Seed's built-in drift detection compares incoming vectors against a rolling 
 - **Trend window:** Last 20 vectors (~10 minutes at 30s intervals).
 - **Alert routing:** Seed webhook notifies hotel management system when happiness trend is declining.
 
-### 5. RuView Live Dashboard Update
+### 5. radiofrequencia Live Dashboard Update
 
-`ruview_live.py` gains a `--seed` flag:
+`radiofrequencia_live.py` gains a `--seed` flag:
 
 ```bash
-python ruview_live.py --port COM5 --seed 169.254.42.1 --mode happiness
+python radiofrequencia_live.py --port COM5 --seed 169.254.42.1 --mode happiness
 ```
 
 This mode displays:
@@ -169,7 +169,7 @@ This mode displays:
                               v
                     +------------------+
                     | Hotel Management |
-                    | System / RuView  |
+                    | System / radiofrequencia  |
                     | Live Dashboard   |
                     +------------------+
 ```
@@ -232,3 +232,4 @@ Key Cognitum Seed endpoints used:
 - Link-local addressing (169.254.x.x) limits the Seed to the same network segment as the ESP32. Multi-room deployments need one Seed per subnet or a routed bridge.
 - Drift detection thresholds require per-property tuning; a luxury resort has different movement patterns than a budget hotel.
 - The system cannot distinguish between guests in a multi-occupancy room without additional multi-target CSI clustering, which is experimental (ADR-064, Tier 3).
+

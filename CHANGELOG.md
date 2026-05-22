@@ -66,7 +66,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   New `wifi_densepose_sensing_server::introspection` module wires
   [midstream](https://github.com/ruvnet/midstream)'s `temporal-attractor` (Lyapunov +
   regime classification) and `temporal-compare` (DTW pattern matching) as a
-  **parallel tap** alongside RuView's existing event pipeline — no replacement,
+  **parallel tap** alongside radiofrequencia's existing event pipeline — no replacement,
   no behaviour change to the existing `/ws/sensing` fan-out or `wifi-densepose-signal`
   DSP. Two new endpoints (off by default, enabled via `--introspection`):
   - `GET /ws/introspection` — newline-delimited JSON snapshots streamed at the CSI
@@ -76,7 +76,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
     after a regime transition), and `top_k_similarity[]` (highest-scoring
     signature matches against a per-deployment library).
   - `GET /api/v1/introspection/snapshot` — single-shot JSON snapshot, auth-gated
-    when `RUVIEW_API_TOKEN` is set.
+    when `radiofrequencia_API_TOKEN` is set.
   Per-frame `update()` budget measured at **0.041 ms p99** on the I5 bench
   (~24× under ADR-099 D4's 1 ms target). Shape-match latency on a 1-D
   mean-amplitude L1 stand-in: **5 frames** (3.20× ratio vs the 16-frame event-path
@@ -86,7 +86,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   including a 200-frame noise warm-up → 10-frame motion-ramp signature benchmark).
 - **Opt-in bearer-token auth on `wifi-densepose-sensing-server`'s `/api/v1/*` HTTP surface (closes #443).**
   New `wifi_densepose_sensing_server::bearer_auth` module: when the
-  `RUVIEW_API_TOKEN` env var is set, every request whose path begins with
+  `radiofrequencia_API_TOKEN` env var is set, every request whose path begins with
   `/api/v1/` must carry an `Authorization: Bearer <token>` header (constant-time
   compared) or the server responds `401 Unauthorized`. When the variable is
   unset or empty the middleware is a no-op — the long-standing LAN-only
@@ -109,7 +109,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `docker.io/ruvnet/wifi-densepose` and `ghcr.io/ruvnet/wifi-densepose` with
   `latest` + `vX.Y.Z` + `sha-<short>` tags, then smoke-tests the published
   artifact: `/health`, `/api/v1/info`, the observatory + pose-fusion UI assets,
-  and the `RUVIEW_API_TOKEN` auth path (no token → 401, wrong → 401, correct
+  and the `radiofrequencia_API_TOKEN` auth path (no token → 401, wrong → 401, correct
   → 200). Uses `DOCKERHUB_USERNAME` / `DOCKERHUB_TOKEN` repo secrets for the
   Docker Hub push; ghcr.io uses the workflow's `GITHUB_TOKEN`.
 - **rvCSI moved to its own repo and is now vendored as a submodule.** The 9 `rvcsi-*`
@@ -117,7 +117,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `-runtime`/`-node`/`-cli` — added inline in #542) now live in
   [`github.com/ruvnet/rvcsi`](https://github.com/ruvnet/rvcsi): published to crates.io
   as `rvcsi-* 0.3.x`, to npm as `@ruv/rvcsi`, with a Claude Code plugin marketplace and
-  a RuView-style README. RuView vendors it under `vendor/rvcsi` (alongside
+  a radiofrequencia-style README. radiofrequencia vendors it under `vendor/rvcsi` (alongside
   `vendor/ruvector` / `vendor/midstream` / `vendor/sublinear-time-solver`) and no longer
   carries inline copies in `v2/crates/`; consumers depend on the published crates (or the
   submodule's `crates/rvcsi-*` paths). `v2/Cargo.toml`, `CLAUDE.md`, and the README docs
@@ -344,7 +344,7 @@ firing cleanly, HEALTH mesh packets sent.
   Kconfig surface added under "Adaptive Controller (ADR-081)".
 
 ### Fixed
-- **Firmware: SPI flash cache crash under high CSI callback pressure** (RuView#396, #397) — ESP32-S3 nodes crashed in `cache_ll_l1_resume_icache` / `wDev_ProcessFiq` after ~2400 callbacks when the promiscuous filter admitted DATA frames at 100–500 Hz. Fixed by narrowing the filter mask to `WIFI_PROMIS_FILTER_MASK_MGMT` (~10 Hz beacons), adding a 50 Hz early callback rate gate (`CSI_MIN_PROCESS_INTERVAL_US`) that drops excess callbacks before any processing work, and enabling `CONFIG_ESP_WIFI_EXTRA_IRAM_OPT=y` as defense-in-depth. Stability validated with a 4-min-per-node soak.
+- **Firmware: SPI flash cache crash under high CSI callback pressure** (radiofrequencia#396, #397) — ESP32-S3 nodes crashed in `cache_ll_l1_resume_icache` / `wDev_ProcessFiq` after ~2400 callbacks when the promiscuous filter admitted DATA frames at 100–500 Hz. Fixed by narrowing the filter mask to `WIFI_PROMIS_FILTER_MASK_MGMT` (~10 Hz beacons), adding a 50 Hz early callback rate gate (`CSI_MIN_PROCESS_INTERVAL_US`) that drops excess callbacks before any processing work, and enabling `CONFIG_ESP_WIFI_EXTRA_IRAM_OPT=y` as defense-in-depth. Stability validated with a 4-min-per-node soak.
 - **Firmware: `filter_mac` / `node_id` clobber by WiFi driver init** (#232, #375, #385, #386, #390, #397) — `g_nvs_config` can be corrupted during `wifi_init_sta()` on some devices (confirmed on `80:b5:4e:c1:be:b8`), reverting `node_id` to the Kconfig default and producing garbage MAC-filter reads in the CSI callback (100–500 Hz). New `csi_collector_set_node_id()` API called from `app_main()` **before** `wifi_init_sta()` captures both fields into module-local statics (`s_node_id`, `s_filter_mac`, `s_filter_mac_set`). `csi_collector_init()` now runs a canary that distinguishes "early≠g_nvs_config" (corruption confirmed) from a no-op match. All CSI runtime paths use the defensive copies exclusively.
 - **Firmware: `edge_processing` sample rate mismatch** (#397) — `estimate_bpm_zero_crossing()` was called with a hard-coded `sample_rate = 20.0f`, but MGMT-only promiscuous delivers ~10 Hz. Breathing and heart-rate reports were 2× too high. Corrected to `10.0f` with an explicit comment tying it to the callback rate.
 - **`provision.py` esptool command form** (#391, #397) — ESP-IDF v5.4 bundles `esptool 4.10.0`, which only accepts `write_flash` (underscore). Standalone `pip install esptool` v5.x accepts both forms but prefers `write-flash`. #391 switched to `write-flash` which broke the documented ESP-IDF Python venv flow; #397 reverts to `write_flash` (works with both esptool 4.x and 5.x) with an inline comment warning future maintainers not to "re-fix" it.
@@ -368,7 +368,7 @@ Model release (no new firmware binary). Firmware remains at v0.6.0-esp32.
   - `scripts/record-csi-udp.py` — Lightweight ESP32 CSI UDP recorder (no Rust build required).
 - **ruvector optimizations (O6-O10)** — Subcarrier selection (70→35, 50% reduction), attention-weighted subcarriers, Stoer-Wagner min-cut person separation, multi-SPSA gradient estimation, Mac M4 Pro training via Tailscale.
 - **Scalable WiFlow presets** — `lite` (189K params, ~19 min) through `full` (7.7M params, ~8 hrs) to match dataset size.
-- **Pre-trained WiFlow v1 model** — 92.9% PCK@20, 974 KB, 186,946 params. Published to [HuggingFace](https://huggingface.co/ruv/ruview) under `wiflow-v1/`.
+- **Pre-trained WiFlow v1 model** — 92.9% PCK@20, 974 KB, 186,946 params. Published to [HuggingFace](https://huggingface.co/ruv/radiofrequencia) under `wiflow-v1/`.
 
 ### Validated
 - **92.9% PCK@20** pose accuracy from a 5-minute data collection session with one $9 ESP32-S3 and one laptop webcam.
@@ -377,7 +377,7 @@ Model release (no new firmware binary). Firmware remains at v0.6.0-esp32.
 ## [v0.6.0-esp32] — 2026-04-03
 
 ### Added
-- **Pre-trained CSI sensing weights published** — First official pre-trained models on [HuggingFace](https://huggingface.co/ruv/ruview). `model.safetensors` (48 KB), `model-q4.bin` (8 KB 4-bit), `model-q2.bin` (4 KB), `presence-head.json`, per-node LoRA adapters.
+- **Pre-trained CSI sensing weights published** — First official pre-trained models on [HuggingFace](https://huggingface.co/ruv/radiofrequencia). `model.safetensors` (48 KB), `model-q4.bin` (8 KB 4-bit), `model-q2.bin` (4 KB), `presence-head.json`, per-node LoRA adapters.
 - **17 sensing applications** — Sleep monitor, apnea detector, stress monitor, gait analyzer, RF tomography, passive radar, material classifier, through-wall detector, device fingerprint, and more. Each as a standalone `scripts/*.js`.
 - **ADRs 069-078** — 10 new architecture decisions covering Cognitum Seed integration, self-supervised pretraining, ruvllm pipeline, WiFlow architecture, channel hopping, SNN, MinCut person separation, CNN spectrograms, novel RF applications, multi-frequency mesh.
 - **Kalman tracker** (PR #341 by @taylorjdawson) — temporal smoothing of pose keypoints.
@@ -793,3 +793,4 @@ Major release: complete Rust sensing server, full DensePose training pipeline, R
 [2.0.0]: https://github.com/ruvnet/wifi-densepose/compare/v1.1.0...v2.0.0
 [1.1.0]: https://github.com/ruvnet/wifi-densepose/compare/v1.0.0...v1.1.0
 [1.0.0]: https://github.com/ruvnet/wifi-densepose/releases/tag/v1.0.0
+

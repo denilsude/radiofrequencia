@@ -21,7 +21,7 @@ git submodule update --init --recursive
 Or clone with submodules in one step:
 
 ```bash
-git clone --recurse-submodules https://github.com/ruvnet/RuView.git
+git clone --recurse-submodules https://github.com/denilsude/rediofrequencia.git
 ```
 
 ## Update to latest upstream
@@ -33,3 +33,4 @@ git commit -m "chore: update vendor submodules"
 ```
 
 A GitHub Actions workflow also checks for updates every 6 hours and opens a PR automatically.
+

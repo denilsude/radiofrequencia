@@ -1114,9 +1114,10 @@ where:
 2. Stoer, M. and Wagner, F. "A Simple Min-Cut Algorithm." JACM, 1997
 3. ADR-028: ESP32 Capability Audit and Witness Verification
 4. ADR-029: RuvSense Multistatic Sensing Mode
-5. ADR-031: RuView Sensing-First RF Mode
+5. ADR-031: radiofrequencia Sensing-First RF Mode
 6. ADR-032: Multistatic Mesh Security Hardening
 7. Wilson, J. and Patwari, N. "Radio Tomographic Imaging with Wireless
    Networks." IEEE Trans. Mobile Computing, 2010
 8. Wang, W. et al. "Understanding and Modeling of WiFi Signal Based Human
    Activity Recognition." MobiCom, 2015
+

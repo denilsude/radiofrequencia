@@ -125,7 +125,7 @@ Layout matches the existing `anomaly-detect`, `presence`, `seizure-detect`, etc.
 - **Gracefully handled the missing local sensing-server on port 3000** by logging structured WARN events (`{"level":"WARN","fields":{"message":"sensing-server fetch failed","error":"...Connection refused..."}}`) without crashing, leaking, or producing NaN output.
 - Exited cleanly on SIGTERM.
 
-0 `pose.frame` events fired during the smoke run — expected, since `127.0.0.1:3000` isn't serving CSI on the appliance. The appliance's actual CSI source is `ruview-vitals-worker` on `:50054` plus the `/api/v1/v0/system/...` endpoints behind the appliance's bearer auth on `:9000`. Wiring `sensing_url` to the appliance-native source is a Day-2 integration task — separate from the cog binary itself.
+0 `pose.frame` events fired during the smoke run — expected, since `127.0.0.1:3000` isn't serving CSI on the appliance. The appliance's actual CSI source is `radiofrequencia-vitals-worker` on `:50054` plus the `/api/v1/v0/system/...` endpoints behind the appliance's bearer auth on `:9000`. Wiring `sensing_url` to the appliance-native source is a Day-2 integration task — separate from the cog binary itself.
 
 Pending separately:
 
@@ -174,3 +174,4 @@ cargo run --release
 ```
 
 `candle-core 0.8.4 + 0.9.2` are typically already in `~/.cargo/registry/cache/` on any developer host, so the build completes in seconds.
+

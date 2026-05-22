@@ -2,7 +2,7 @@
 
 - **Status:** Accepted
 - **Date:** 2026-03-12
-- **Issues:** [#247](https://github.com/ruvnet/RuView/issues/247), [#229](https://github.com/ruvnet/RuView/issues/229)
+- **Issues:** [#247](https://github.com/denilsude/rediofrequencia/issues/247), [#229](https://github.com/denilsude/rediofrequencia/issues/229)
 
 ## Context
 
@@ -57,3 +57,4 @@ python provision.py --port COM7 --channel 11 --filter-mac "AA:BB:CC:DD:EE:FF"
 - Auto-channel detection eliminates the most common misconfiguration
 - Backward compatible: existing provisioned nodes without these keys behave
   as before (use Kconfig default channel, accept all MACs)
+

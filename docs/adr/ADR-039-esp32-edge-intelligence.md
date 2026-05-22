@@ -1,6 +1,6 @@
 # ADR-039: ESP32-S3 Edge Intelligence Pipeline
 
-**Status**: Accepted (hardware-validated on RuView ESP32-S3)
+**Status**: Accepted (hardware-validated on radiofrequencia ESP32-S3)
 **Date**: 2026-03-02
 **Deciders**: @ruvnet
 
@@ -144,7 +144,7 @@ gesture recognition, coherence monitoring, adversarial detection.
 - `intrusion.rs` — State-machine intrusion detection (calibrate-monitor-arm-alert)
 - `occupancy.rs` — Spatial occupancy zone detection with per-zone variance analysis
 
-## Hardware Benchmark (RuView ESP32-S3)
+## Hardware Benchmark (radiofrequencia ESP32-S3)
 
 Measured on ESP32-S3 (QFN56 rev v0.2, 8 MB flash, 160 MHz, ESP-IDF v5.2).
 
@@ -209,3 +209,4 @@ Measured on ESP32-S3 (QFN56 rev v0.2, 8 MB flash, 160 MHz, ESP-IDF v5.2).
 3. **CSI rate exceeds spec** — measured 28.5 Hz vs. expected ~20 Hz. Performance headroom is better than estimated.
 4. **WiFi-to-Ethernet isolation** — some routers block UDP between WiFi and wired clients. Recommend same-subnet verification in deployment guide.
 5. **sendto ENOMEM crash (Issue #127)** — CSI callbacks in promiscuous mode fire 100-500+ times/sec, exhausting the lwIP pbuf pool and causing a guru meditation crash. Fixed with a dual approach: 50 Hz rate limiter in `csi_collector.c` (20 ms minimum send interval) and a 100 ms ENOMEM backoff in `stream_sender.c`. Binary size with fix: 947 KB. Hardware-verified stable for 200+ CSI callbacks with zero ENOMEM errors.
+

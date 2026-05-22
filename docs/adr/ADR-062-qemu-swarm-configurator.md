@@ -4,7 +4,7 @@
 |-------------|------------------------------------------------|
 | **Status**  | Accepted                                       |
 | **Date**    | 2026-03-14                                     |
-| **Authors** | RuView Team                                    |
+| **Authors** | radiofrequencia Team                                    |
 | **Relates** | ADR-061 (QEMU testing platform), ADR-060 (channel/MAC filter), ADR-018 (binary frame), ADR-039 (edge intel) |
 
 ## Glossary
@@ -197,3 +197,4 @@ scripts/
 - ADR-060: Channel override and MAC address filter provisioning
 - ADR-018: Binary CSI frame format (magic `0xC5110001`)
 - ADR-039: Edge intelligence pipeline (biquad, vitals, fall detection)
+

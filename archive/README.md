@@ -1,6 +1,6 @@
 # Archive
 
-Frozen, no-longer-active components of RuView preserved for historical
+Frozen, no-longer-active components of radiofrequencia preserved for historical
 reference, reproducibility, and load-bearing legacy paths the active
 codebase still depends on.
 
@@ -8,7 +8,7 @@ codebase still depends on.
 
 | Path | What it is | Why it's archived | Still load-bearing? |
 |------|------------|-------------------|---------------------|
-| `v1/` | Original Python implementation of RuView (CSI processing, hardware adapters, services, FastAPI) | Superseded by the Rust workspace at `v2/`; ~810× slower in benchmarks. Kept rather than deleted because the deterministic proof bundle (`v1/data/proof/`) is part of the pre-merge witness verification process per ADR-011 / ADR-028. | **Yes — for the proof bundle only.** Active code lives in `v2/`. |
+| `v1/` | Original Python implementation of radiofrequencia (CSI processing, hardware adapters, services, FastAPI) | Superseded by the Rust workspace at `v2/`; ~810× slower in benchmarks. Kept rather than deleted because the deterministic proof bundle (`v1/data/proof/`) is part of the pre-merge witness verification process per ADR-011 / ADR-028. | **Yes — for the proof bundle only.** Active code lives in `v2/`. |
 
 ## What "archived" means
 
@@ -72,3 +72,4 @@ That decision belongs in its own ADR.
 - `docs/adr/ADR-028-esp32-capability-audit.md`
 - `archive/v1/data/proof/README.md` (if present)
 - `docs/WITNESS-LOG-028.md`
+

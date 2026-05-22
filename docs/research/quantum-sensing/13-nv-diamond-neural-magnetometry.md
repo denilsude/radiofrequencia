@@ -454,7 +454,7 @@ t = -100 ms: NV detects motor command formation (further topology shift)
 t = 0 ms:    WiFi CSI detects actual body movement
 ```
 
-This enables **predictive** body tracking: RuView knows the person will move before
+This enables **predictive** body tracking: radiofrequencia knows the person will move before
 the movement physically occurs.
 
 ---
@@ -788,3 +788,4 @@ dominate neuroimaging.
 *This document is part of the RF Topological Sensing research series. It surveys
 nitrogen-vacancy diamond magnetometry technology and its application to neural current
 detection for brain network topology analysis.*
+

@@ -1,4 +1,4 @@
-/* RuView Edge App Store registry.
+/* radiofrequencia Edge App Store registry.
  *
  * Catalog of every WASM edge module shipping in the workspace plus the
  * `nvsim` simulator itself. Each entry maps to a hot-loadable algorithm
@@ -329,3 +329,4 @@ export function fuzzyMatch(query: string, app: AppManifest): number {
   if (app.category === q) score += 5;
   return score;
 }
+

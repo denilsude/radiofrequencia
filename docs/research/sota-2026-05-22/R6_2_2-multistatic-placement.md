@@ -83,7 +83,7 @@ This is a **shipping-ready cost-optimisation conclusion** with explicit numbers.
 1. **Concrete cost-optimisation answer**: 5 anchors is the practical recommendation for most consumer rooms.
 2. **Saturation curve methodology**: customer / installer can run their own room layout and see where their knee is.
 3. **ADR-029 update**: anchor-count recommendation backed by physics + benchmark.
-4. **Forward-projection**: combined with R1 (precision) and R6.2 (single-pair lift), we now have a full **sensing geometry budget** for any RuView room install.
+4. **Forward-projection**: combined with R1 (precision) and R6.2 (single-pair lift), we now have a full **sensing geometry budget** for any radiofrequencia room install.
 
 ## What this DOES NOT enable
 
@@ -96,7 +96,7 @@ This is a **shipping-ready cost-optimisation conclusion** with explicit numbers.
 
 - **R6.2.1**: 3D extension with ceiling/floor anchors
 - **R6.2.3**: pose-trajectory-aware target zones (need AETHER + R3 data)
-- **R6.2 productisation**: ship as `wifi-densepose plan-antennas` CLI subcommand + MCP tool `ruview_placement_recommend`
+- **R6.2 productisation**: ship as `wifi-densepose plan-antennas` CLI subcommand + MCP tool `radiofrequencia_placement_recommend`
 
 ## Connection back
 
@@ -104,3 +104,4 @@ This is a **shipping-ready cost-optimisation conclusion** with explicit numbers.
 - **R11** (maritime) — through-seam sensing in cabins is small + cluttered; saturation likely hits earlier (N=3-4). Worth benchmarking on cabin geometry.
 - **R10** (foliage / wildlife) — outdoor wildlife corridors are long + thin; saturation curve will be different (more anchors needed for length, fewer for width).
 - **ADR-029 / ADR-105 / ADR-106** — N=5 is also the Krum byzantine-fault-tolerance threshold for f=1 attacker, which means **the same 5-anchor count satisfies coverage, R7 adversarial defence, and ADR-105 federation byzantine bound simultaneously**. The numerology is convenient and probably not coincidental — these constraints are all bounded by similar inverse-square-of-geometry scaling.
+

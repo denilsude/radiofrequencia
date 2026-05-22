@@ -6,7 +6,7 @@
 
 Hospitals run on a paradox: patients need continuous monitoring, yet cameras and microphones are unacceptable in patient rooms for privacy and dignity reasons. Wearable monitors solve part of this (continuous HR / SpO₂) but require subject compliance and battery management. CSI sensing — passive, no light, no microphone, through-wall-capable — is the right modality for ward-level continuous observation **if** the privacy and clinical-grade accuracy constraints can be met.
 
-The RuView research loop has produced exactly the primitives needed:
+The radiofrequencia research loop has produced exactly the primitives needed:
 
 | Healthcare requirement | Loop primitive |
 |---|---|
@@ -153,3 +153,4 @@ This vertical sketch confirms that the loop's 9-ADR + 13-thread + 9-tick R6 fami
 - **R15 (biometric primitives)**: per-patient ID + vital primitives.
 - **R3 (cross-room re-ID)**: per-ward patient identity preservation.
 - **ADR-105/106/107/108/109/113**: privacy + federation + provenance + placement all binding.
+

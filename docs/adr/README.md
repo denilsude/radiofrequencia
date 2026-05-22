@@ -1,6 +1,6 @@
 # Architecture Decision Records
 
-This folder contains 44 Architecture Decision Records (ADRs) that document every significant technical choice in the RuView / WiFi-DensePose project.
+This folder contains 44 Architecture Decision Records (ADRs) that document every significant technical choice in the radiofrequencia / WiFi-DensePose project.
 
 ## Why ADRs?
 
@@ -84,7 +84,7 @@ Statuses: **Proposed** (under discussion), **Accepted** (approved and/or impleme
 | [ADR-019](ADR-019-sensing-only-ui-mode.md) | Sensing-Only UI with Gaussian Splats | Accepted |
 | [ADR-022](ADR-022-windows-wifi-enhanced-fidelity-ruvector.md) | Windows WiFi Enhanced Fidelity (multi-BSSID) | Partial |
 | [ADR-025](ADR-025-macos-corewlan-wifi-sensing.md) | macOS CoreWLAN WiFi Sensing | Proposed |
-| [ADR-031](ADR-031-ruview-sensing-first-rf-mode.md) | RuView Sensing-First RF Mode | Proposed |
+| [ADR-031](ADR-031-radiofrequencia-sensing-first-rf-mode.md) | radiofrequencia Sensing-First RF Mode | Proposed |
 | [ADR-034](ADR-034-expo-mobile-app.md) | Expo React Native Mobile App | Accepted |
 | [ADR-035](ADR-035-live-sensing-ui-accuracy.md) | Live Sensing UI Accuracy and Data Transparency | Accepted |
 | [ADR-036](ADR-036-rvf-training-pipeline-ui.md) | Training Pipeline UI Integration | Proposed |
@@ -107,9 +107,9 @@ Statuses: **Proposed** (under discussion), **Accepted** (approved and/or impleme
 | [ADR-038](ADR-038-sublinear-goal-oriented-action-planning.md) | Sublinear GOAP for Roadmap Optimization | Proposed |
 | [ADR-095](ADR-095-rvcsi-edge-rf-sensing-platform.md) | rvCSI — Edge RF Sensing Runtime Platform | Proposed |
 | [ADR-096](ADR-096-rvcsi-ffi-crate-layout.md) | rvCSI — Crate Topology, the napi-c Shim, and the napi-rs Node Surface | Proposed |
-| [ADR-097](ADR-097-adopt-rvcsi-as-ruview-csi-runtime.md) | Adopt rvCSI as RuView's primary CSI runtime (phased adoption) | Proposed |
-| [ADR-098](ADR-098-evaluate-midstream-fit.md) | Evaluate `ruvnet/midstream` for RuView's CSI / WebSocket / mesh pipeline | Rejected |
-| [ADR-099](ADR-099-midstream-introspection-tap.md) | Adopt midstream as RuView's real-time introspection + low-latency tap | Proposed |
+| [ADR-097](ADR-097-adopt-rvcsi-as-radiofrequencia-csi-runtime.md) | Adopt rvCSI as radiofrequencia's primary CSI runtime (phased adoption) | Proposed |
+| [ADR-098](ADR-098-evaluate-midstream-fit.md) | Evaluate `ruvnet/midstream` for radiofrequencia's CSI / WebSocket / mesh pipeline | Rejected |
+| [ADR-099](ADR-099-midstream-introspection-tap.md) | Adopt midstream as radiofrequencia's real-time introspection + low-latency tap | Proposed |
 
 ---
 
@@ -118,3 +118,4 @@ Statuses: **Proposed** (under discussion), **Accepted** (approved and/or impleme
 - [DDD Domain Models](../ddd/) — Bounded context definitions, aggregate roots, and ubiquitous language
 - [User Guide](../user-guide.md) — Setup, API reference, and hardware instructions
 - [Build Guide](../build-guide.md) — Building from source
+

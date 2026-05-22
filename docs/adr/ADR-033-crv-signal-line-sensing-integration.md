@@ -6,7 +6,7 @@
 | **Date** | 2026-03-01 |
 | **Deciders** | ruv |
 | **Codename** | **CRV-Sense** -- Coordinate Remote Viewing Signal Line for WiFi Sensing |
-| **Relates to** | ADR-016 (RuVector Integration), ADR-017 (RuVector Signal+MAT), ADR-024 (AETHER Embeddings), ADR-029 (RuvSense Multistatic), ADR-030 (Persistent Field Model), ADR-031 (RuView Viewpoint Fusion), ADR-032 (Mesh Security) |
+| **Relates to** | ADR-016 (RuVector Integration), ADR-017 (RuVector Signal+MAT), ADR-024 (AETHER Embeddings), ADR-029 (RuvSense Multistatic), ADR-030 (Persistent Field Model), ADR-031 (radiofrequencia Viewpoint Fusion), ADR-032 (Mesh Security) |
 
 ---
 
@@ -719,7 +719,7 @@ Additionally, the CRV module benefits from existing ruvector integrations alread
 | ADR-024 (AETHER Embeddings) | **Consumed**: Per-viewpoint AETHER 128-d embeddings are the representation fed into CRV stages |
 | ADR-029 (RuvSense Multistatic) | **Extended**: Multistatic mesh topology encoded as CRV Stage III; TDM frames are the input to Stage I |
 | ADR-030 (Persistent Field Model) | **Extended**: Field model history serves as the Stage V interrogation corpus; cross-room tracker bridges to CRV convergence |
-| ADR-031 (RuView Viewpoint Fusion) | **Complementary**: RuView fuses viewpoints within a room; CRV convergence matches identities across rooms |
+| ADR-031 (radiofrequencia Viewpoint Fusion) | **Complementary**: radiofrequencia fuses viewpoints within a room; CRV convergence matches identities across rooms |
 | ADR-032 (Mesh Security) | **Consumed**: Authenticated beacons and frame integrity (ADR-032) ensure CRV Stage IV AOL detection reflects genuine signal quality, not spoofed frames |
 
 ---
@@ -738,3 +738,4 @@ Additionally, the CRV module benefits from existing ruvector integrations alread
 10. `ruvector-mincut` v2.0.1. https://crates.io/crates/ruvector-mincut
 11. Geng, J. et al. (2023). "DensePose From WiFi." arXiv:2301.00250.
 12. ADR-016 through ADR-032 (internal).
+

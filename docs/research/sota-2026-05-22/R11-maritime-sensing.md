@@ -102,7 +102,7 @@ At 2.4 GHz λ = 12.5 cm, so any slot wider than 6.25 cm is effectively transpare
 ## What this DOES enable
 
 - A **physically honest** maritime sensing roadmap that doesn't promise through-bulkhead capability that doesn't exist.
-- Clear product categories where ESP32 + RuView stack adds value: man-overboard surface detection, through-seam vitals, container tamper detection.
+- Clear product categories where ESP32 + radiofrequencia stack adds value: man-overboard surface detection, through-seam vitals, container tamper detection.
 - A predictive-maintenance angle (hatch-seal degradation) that has no current sensor alternative.
 
 ## What this DOES NOT enable
@@ -124,3 +124,4 @@ At 2.4 GHz λ = 12.5 cm, so any slot wider than 6.25 cm is effectively transpare
 - **R10** (foliage) — air-side maritime scenarios reuse R10's link-budget primitives unmodified.
 - **R12** (eigenshift) — the structure-detection problem is even harder on ships because the natural drift floor includes vessel motion and engine vibration. PABS over Fresnel+vibration basis is the maritime version.
 - **R14** (empathic appliances) — through-seam vitals + the V1 stress-responsive lighting framework could plausibly become "crew wellness monitoring in confined ship cabins". Privacy framework from R14 transfers directly.
+

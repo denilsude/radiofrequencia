@@ -3,7 +3,7 @@
 - **Status:** Proposed
 - **Date:** 2026-04-06
 - **Source:** [QE Analysis Gist (2026-04-05)](https://gist.github.com/proffesor-for-testing/a6b84d7a4e26b7bbef0cf12f932925b7)
-- **Full Reports:** [proffesor-for-testing/RuView `qe-reports` branch](https://github.com/proffesor-for-testing/RuView/tree/qe-reports/docs/qe-reports)
+- **Full Reports:** [proffesor-for-testing/radiofrequencia `qe-reports` branch](https://github.com/proffesor-for-testing/radiofrequencia/tree/qe-reports/docs/qe-reports)
 
 ## Context
 
@@ -97,3 +97,4 @@ Address the 15 prioritized issues from the QE analysis in three waves: P0 (immed
 ---
 
 *Generated from QE swarm analysis (fleet-02558e91) on 2026-04-05*
+
